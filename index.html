@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Street View side-by-side</title>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!-- Load the Sounds of Street View code -->
+        <script src="js/sosv.min.js"></script>
+        <!--script src="js/sosv.js"></script-->
+        <script src="howler.js-master/src/howler.core.js"></script>
+        <script src="data/audio.json"></script>
+        
+        <!--base href="https://www.w3schools.com/images/"-->
+
+        <!-- Your code to create an instance of a Sound of Street View -->
+        <script>
+            $(function(){
+                // Create your Sound of Street View - make sure the path points to your JSON file
+                //new SOSV('data/audio.json');
+            });
+        </script>
+        
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #map, #pano {
+                float: left;
+                height: 100%;
+                width: 45%;
+            }
+        
+            .dropbtn {
+                background-color: #4169E1;
+                color: white;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 54px;
+                padding-right: 54px;
+                font-size: 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #191970;
+            }
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 150px;
+                overflow: auto;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+            
+            /*.dropdown-content a  {
+                color: #000000;
+                text-align: center;
+                background-color: antiquewhite;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }*/
+            
+            /*.dropdown a:hover, .dropdown a:focus {
+                background-color: #7171C6;
+            }*/
+
+            /*.dropdown-content a {*/
+            /*#0000, #0200, #0400, #0600, #0800, #1000, #1200, #1400, #1600, #1800, #2000, #2200 {*/
+            #t0000, #t0200, #t0400, #t0600, #t0800, #t1000, #t1200, #t1400, #t1600, #t1800, #t2000, #t2200 {
+                color: #000000;
+                text-align: center;
+                background-color: antiquewhite;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+            
+            #t0000:hover, #t0200:hover, #t0400:hover, #t0600:hover, #t0800:hover, #t1000:hover, #t1200:hover, #t1400:hover, #t1600:hover, #t1800:hover, #t2000:hover, #t2200:hover {
+                background-color: #7171C6;
+            }
+
+            .show {display:block;}
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <div id="pano"></div>
+        
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Time</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a id="t0000" href="#0000" onclick="checkBtn(event)">0000</a>
+                <a id="t0200" href="#0200" onclick="checkBtn(event)">0200</a>
+                <a id="t0400" href="#0400" onclick="checkBtn(event)">0400</a>
+                <a id="t0600" href="#0600" onclick="checkBtn(event)">0600</a>
+                <a id="t0800" href="#0800" onclick="checkBtn(event)">0800</a>
+                <a id="t1000" href="#1000" onclick="checkBtn(event)">1000</a>
+                
+                <a id="t1200" href="#1200" onclick="checkBtn(event)">1200</a>
+                <a id="t1400" href="#1400" onclick="checkBtn(event)">1400</a>
+                <a id="t1600" href="#1600" onclick="checkBtn(event)">1600</a>
+                <a id="t1800" href="#1800" onclick="checkBtn(event)">1800</a>
+                <a id="t2000" href="#2000" onclick="checkBtn(event)">2000</a>
+                <a id="t2200" href="#2200" onclick="checkBtn(event)">2200</a>
+            </div>
+        </div>
+        
+        <script>
+            //var fenway = {lat: 42.345573, lng: -71.098326};
+            var tampines = {lat: 1.3532035, lng: 103.944902};
+            var tamp02 = {lat: 1.3528889, lng: 103.94442};
+            var tamp03 = {lat: 1.3531631, lng: 103.9449244};
+            
+            //panoId = 'RJd2HuqmShMAAAQfCa3ulg'  //test
+            
+            //taken after 9pm
+            //panoId = 'CAoSLEFGMVFpcE4zUmpJOV9vMzVCQVZ3dzFycWdRZ1ZZNlozOFczNjlISE5vU2gy'  //location 1 - mall
+            panoId2 = 'AF1QipN3RjI9_o35BAVww1rqgQgVY6Z38W369HHNoSh2'  //location 1 - not working?
+            
+            panoId3 = 'CAoSLEFGMVFpcFB3cTlDQWVvNVdDRDdzUWExRnN3UHRwcUhlSzlzdjRISjg3ZFhf'  //location 2 - park
+            panoId4 = 'AF1QipPwq9CAeo5WCD7sQa1FswPtpqHeK9sv4HJ87dX_'  //location 2 - not working?
+            
+            var markers = [];
+            
+            //var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+            var iconBase = '/img/';
+            var icons = {
+                music: {
+                    icon: iconBase + 'marker.png'
+                }
+            };
+            var features = [
+                {
+                    position: tamp02,
+                    size: new google.maps.Size(10, 10),  //useless
+                    type: 'music'
+                },
+                {
+                    position: tamp03,
+                    size: new google.maps.Size(10, 10),
+                    type: 'music'
+                }
+            ];
+            
+            //var map;
+            //var panorama;
+            var panoId;
+            //var defaultPos = {lat: 1.34946590020551, lng: 103.94630536437035}
+            var defaultPos = {lat: 1.353628536030063, lng: 103.9450628310442}
+            var prevVolume = 0;
+            var vol = 0;
+            var prevPos;
+            //var sound = null;
+            
+            audio = [];
+            files = [];
+            indexArr = [];
+            
+            currTime = "0000";
+            
+            /*$(function(){
+                // Create your Sound of Street View - make sure the path points to your JSON file
+                new SOSV('data/audio.json');
+            });*/
+            
+            function initialize() {
+                //new SOSV('data/audio.json');
+                //var fenway = {lat: 42.345573, lng: -71.098326};
+                //var tampines = {lat: 1.3532035, lng: 103.944902}
+                //var defaultPos = {lat: 25.01454757187443, lng: 121.30027011036873}
+                
+                //var map = new google.maps.Map(document.getElementById('map'));
+                map = new google.maps.Map(document.getElementById('map'), {
+                    //center: fenway,
+                    //center: tampines,
+                    center: defaultPos,
+                    zoom: 14,
+                    mapTypeControl: true,
+                    scaleControl: true,
+                    streetViewControl: true
+                });
+                /*var musicMarker = new google.maps.Marker({
+                    position: tamp02,
+                    map: map,
+                    icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=cafe|FFFF00',
+                    title: 'Music'
+                });*/
+                
+                /*features.forEach(function(feature) {
+                    var marker = new google.maps.Marker({
+                        position: feature.position,
+                        icon: icons[feature.type].icon,
+                        title: 'Music',
+                        map: map
+                    });
+                });*/
+                
+                //panorama = new SOSV((document.getElementById('pano')), 'data/audio.json');
+                //panorama = document.getElementById('pano');
+                //panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
+                panorama = new google.maps.StreetViewPanorama(
+                    document.getElementById('pano'), {
+                    //position: fenway,
+                    //position: tampines,
+                    position: defaultPos,
+                    pov: {
+                        heading: 34,
+                        pitch: 10
+                    }
+                });
+                
+                //alert(panorama.getPosition().toString());
+                /*var musicMarker2 = new google.maps.Marker({
+                    position: tamp02,
+                    map: panorama,
+                    icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=cafe|FFFF00',
+                    title: 'Music'
+                });*/
+                
+                /*features.forEach(function(feature) {
+                    var marker = new google.maps.Marker({
+                        position: feature.position,
+                        icon: icons[feature.type].icon,
+                        title: 'Music',
+                        map: panorama
+                    });
+                });*/
+                
+                // 1. Create the button
+                //var button = document.createElement("button");
+                //button.innerHTML = "Do Something";
+
+                // 2. Append somewhere
+                //var body = document.getElementsByTagName("body")[0];
+                //body.appendChild(button);
+
+                // 3. Add event handler
+                //button.addEventListener ("click", function() {
+                  //alert("did something");
+                //});
+                
+                //var btn = document.createElement("button");        // Create a <button> element
+                //var t = document.createTextNode("Click Me");       // Create a text node
+                //btn.appendChild(t);                                // Append the text to <button>
+                //document.body.appendChild(btn); 
+                
+                /*$.getJSON('data/location.json', function(data) {
+                    $.each(data.locations, function(i, f) {
+                        //var tblRow = "<tr>" + "<td>" + f.name + "</td>" +
+                        //"<td>" + f.panoid + "</td>" + "<td>" + f.lat + "</td>" + "<td>" + f.lng + "</td>" + "</tr>"
+                        //$(tblRow).appendTo("#userdata tbody");
+                        if (f.name == "20mall") {
+                            panoId = f.panoid;
+                            //alert(panoId);
+                            //var center = {lat: f.lat, lng: f.lng};
+                            //alert(center);
+                            map.setCenter(new google.maps.LatLng(f.lat, f.lng));
+                            //map.setCenter(new google.maps.LatLng(center));
+                        }
+                    });
+                });*/
+
+                //panorama.setPano(panoId);  //test
+                //map.setStreetView(panorama);
+                
+                if (window.location.href.indexOf("?dev=true") > -1) {
+                    addMarker();
+                }
+                
+                prevPos = panorama.getPosition();
+                
+                var audio = new Audio('audio/horn.mp3');
+                //audio.play();
+                
+                newPos = panorama.getPosition();
+                newLat = newPos.lat();
+                newLng = newPos.lng();
+                
+                //checkAudio(newLat, newLng);
+                
+                google.maps.event.addListener(panorama, 'position_changed', function() {
+                //panorama.addListener('position_changed', function() {
+                    newPos = panorama.getPosition();
+                    //alert(newPos.toString()); 
+                    //panoId = newPos.lat();
+                    //panorama = newPos.lng();
+                    //if (panorama.getPosition().lat() == f.lat) && (panorama.getPosition().lng() == f.lng) {
+                    //newLat = map.getCenter().lat();
+                    //newLng = map.getCenter().lng();
+                    newLat = newPos.lat();
+                    newLng = newPos.lng();
+                    //alert(newLat.toString());
+                    //map.setCenter(new google.maps.LatLng(newLat, newLng));
+                    
+                    /*if (sound != null) {
+                        alert("i'm in");
+                        sound.stop();
+                        sound.unload();
+                        sound = null;
+                    }*/
+
+                    //checkAudio(newLat, newLng, checkFilesArray);
+                    
+                    /*if (audio.length > 0) {
+                        alert("something in audio");
+                        sound.stop();
+                        sound.unload();
+                        audio = [];
+                    }
+                    else {
+                        alert("nothing in audio");
+                    }*/
+                    stopAudio();
+                    
+                    checkAudio(newLat, newLng).pipe(checkFilesArray);
+                    
+                    /*checkAudio(newLat, newLng, function() {
+                        if (files.length > 0) {
+                            alert(files.toString());
+
+                            sound = new Howl({
+                                src: files,
+                                html5: true
+                            });
+
+                            for (i = 0; i < files.length; i++) {
+                                id = sound.play();
+                                audio.push(id.toString());
+                            }
+
+                            files = [];
+                        }
+                        else {
+                            alert("nothing in files");
+                        }
+                    });*/
+                    
+                    //setLocation(map, panoId, panorama);
+                    
+                    //prevPos.lat() = newLat;
+                    //prevPos.lng() = newLng;
+                });
+                
+                //checkAudio(newLat, newLng);
+                
+                //setLocation(map, panoId, panorama);
+                //panorama.setPano(panoId);  //test
+                
+                //alert(panorama.getPosition().toString());
+
+                map.setStreetView(panorama);
+                
+                //checkCurrentTime(newLat, newLng);
+                
+                //alert("check time: " + currTime.toString());
+            }
+            
+            //google.maps.event.addDomListener(window, 'load', initialize);
+            
+            function checkCurrentTime(lat, lng) {
+                
+                //alert("in checkCurrentTime function");
+                
+                //alert("lat: " + lat.toString() + " & lng: " + lng.toString());
+                
+                var timearr = ["#t0000", "#t0200", "#t0400", "#t0600", "#t0800", "#t1000", "#t1200", "#t1400", "#t1600", "#t1800", "#t2000", "#t2200"];
+                
+                var flag = true;
+
+                $.getJSON('data/location.json', function(data) {
+                    $.each(data.locations, function(i, f) {
+                        if (flag) {
+                            if ((lat.toString() == f.lat) && (lng.toString() == f.lng)) {
+                                hexSign = "#t";
+                                validateTime = hexSign.concat(f.time);
+                                
+                                supposedTime = f.time;
+
+                                //alert("f.time = " + f.time);
+                                //alert("validateTime = " + validateTime);
+
+                                for (i = 0; i < timearr.length; i++) {
+                                    //alert("hello");
+                                    //alert(timearr[i].toString());
+                                    if (validateTime == timearr[i].toString()) {
+                                        //alert("the time to highlight" + timearr[i].toString());
+                                        $(validateTime).css('background-color', '#D2691E');
+                                    }
+                                    else {
+                                        //alert("the time to not shine" + timearr[i].toString());
+                                        $(timearr[i].toString()).css('background-color', '');
+                                    }
+                                }
+                                flag = false;
+                                
+                                //alert("supposedTime when setting: " + supposedTime);
+                            }
+                            else {
+                                for (i = 0; i < timearr.length; i++) {
+                                    $(timearr[i].toString()).css('background-color', '');
+                                }
+                            }
+                        }
+                    });
+                });
+                return supposedTime;
+            }
+            
+            function sleep (time) {
+                return new Promise((resolve) => setTimeout(resolve, time));
+            }
+            
+            function defaultCall(diffLat, diffLng, jsTime, actualTime) {
+                //if ((newLat.toString() == f.lat) && (newLng.toString() == f.lng)) {
+                    if ((diffLat < 0.0005) && (diffLng < 0.0005) && (jsTime == actualTime)) { //&& (f.time == "0000")) {
+                        alert("i'm in if loop");
+                        alert(f.time);
+                        alert("f.lat: " + f.lat + " & f.lng: " + f.lng);
+                        alert("lat: " + newLat + " & lng: " + newLng);
+
+                        files.push(f.src.toString());
+
+                        /*sound = new Howl({  //--most recent
+                            src: [f.src.toString()]
+                        });
+
+                        id = sound.play();
+                        audio.push(id.toString());*/
+
+                        //sound.fade(prevVolume, vol, 500);
+                    }
+                //}
+            }
+            
+            function checkAudio(newLat, newLng) {//, callback) {
+                var d = $.Deferred();
+                
+                setTimeout(function() {
+                    //var audio;
+                    var id;
+                    var index = 0;
+                    const howlerList = {};
+                    //alert(newLat.toString());
+                    alert("got here");
+                    supposedTime = checkCurrentTime(newLat, newLng);
+
+                    /*if (sound != null) {
+                        alert("i'm in");
+                        sound.stop();
+                        sound.unload();
+                        sound = null;
+                    }*/
+
+                    /*Object.keys(howlerList).forEach(function(key) {
+                        howlerList[key].stop();
+                    });*/
+
+                    /*if (audio.length > 0) {
+                        alert("something in audio");
+                        //this._sound.stop();
+                        //this._sound.unload();
+                        sound.stop();
+                        sound.unload();
+                        for (i = 0; i < audio.length; i++) {
+                            //alert("array: " + audio.toString());
+                            //sound.stop(parseInt(audio[i], 10));
+                            //sound.unload();
+                            audio.splice(0, 1);
+                            //alert("array cut: " + audio.toString());
+                        }
+                    }
+                    else {
+                        alert("nothing");
+                    }*/
+
+                    $.getJSON('data/audio.json', function(data) {
+                        $.each(data.sounds, function(i, f) {
+                            //alert(window.location.href.substr(window.location.href.lastIndexOf('#') + 1));
+
+                            diffLat = Math.abs(newLat - f.lat);
+                            diffLng = Math.abs(newLng - f.lng);
+
+                            /*sound = new Howl({
+                                src: [f.src.toString()]
+                            });*/
+
+                            /*if (audio.length > 0) {
+                                if (index == 0) {
+                                    //alert("something in audio");
+                                }
+                                //alert("something in audio");
+                                for (i = 0; i < audio.length; i++) {
+                                    //alert("id: " + audio[i]);
+                                    sound.stop(parseInt(audio[i], 10));
+                                }
+                            }*/
+
+                            //alert(audio.length.toString());
+
+                            //sound.unload();
+
+                            if ((window.location.href.substr(window.location.href.lastIndexOf('#') + 1)) == f.time) {
+                                if (index == 0) {
+                                    alert("first if");
+                                }
+
+                                //diffLat = Math.abs(newLat - f.lat);
+                                //diffLng = Math.abs(newLng - f.lng);
+
+                                //alert(diffLat.toString());
+                                updateVolume(f.lat, f.lng, newLat, newLng, f.db);
+                                //alert("volume in loop: " +　vol.toString());
+
+                                //alert(diffLat.toString());
+                                //alert(diffLng.toString());
+
+                                var loop = (!parseFloat(f.pause)) ? true : false;
+
+                                if ((diffLat < 0.0005) && (diffLng < 0.0005)) {// && (f.time == currTime)) {
+                                    alert(f.name);
+                                    //alert(diffLat.toString() + " and " + diffLng.toString());
+                                    //alert("check time: " + currTime.toString());
+                                    /*sound = new Howl({
+                                        src: [f.src.toString()],
+                                        autoplay: true,
+                                        loop: true,
+                                        //loop: loop,
+                                        //volume: vol//,
+                                        //onend: function() {
+                                            //alert('Finished!');
+                                        //}
+                                        //src: [f.src.toString()]
+                                    })*/
+                                    //alert(f.src);
+
+                                    files.push(f.src.toString());
+
+                                    /*sound = new Howl({  //--most recent
+                                        src: [f.src.toString()]
+                                    });
+
+                                    id = sound.play();*/
+
+                                    //alert("playing");
+                                    //alert(id.toString());
+
+                                    //audio.push(id.toString());  //--most recent
+
+                                    //alert(audio[index].toString());
+
+                                    //sound.fade(prevVolume, vol, 500);  //--most recent
+
+                                    //alert(audio.toString());
+                                    //alert("sound stop");
+                                    //alert(audio[0]);
+                                    //sound.stop(parseInt(audio[0], 10));
+                                    //sound.unload();
+                                    //alert("stopped");
+                                }
+
+                            }
+                            else if (!window.location.href.endsWith("00")) {
+                                //checkCurrentTime(newLat, newLng);
+                                //alert("supposedTime: " + supposedTime);
+                                
+                                if (index == 0) {
+                                    alert("else if");
+                                }
+                                
+                                //alert(supposedTime);
+                                //alert("hello???");
+                                if (typeof supposedTime != 'undefined') {
+                                    if ((diffLat < 0.0005) && (diffLng < 0.0005) && (f.time == supposedTime)) { //&& (f.time == "0000")) {
+                                        alert("i'm in if loop");
+                                        alert(f.time);
+                                        alert("f.lat: " + f.lat + " & f.lng: " + f.lng);
+                                        alert("lat: " + newLat + " & lng: " + newLng);
+
+                                        files.push(f.src.toString());
+                                    }
+                                    
+                                }
+                                else {
+                                    //alert("gonna sleep");
+                                    //setTimeout("checkAudio(newLat, newLng);", 1000);
+                                    alert("not yet");
+                                }
+                                
+                                /*//if ((newLat.toString() == f.lat) && (newLng.toString() == f.lng)) {
+                                    if ((diffLat < 0.0005) && (diffLng < 0.0005) && (f.time == supposedTime)) { //&& (f.time == "0000")) {
+                                        alert("i'm in if loop");
+                                        alert(f.time);
+                                        alert("f.lat: " + f.lat + " & f.lng: " + f.lng);
+                                        alert("lat: " + newLat + " & lng: " + newLng);
+
+                                        files.push(f.src.toString());
+
+                                        /*sound = new Howl({  //--most recent
+                                            src: [f.src.toString()]
+                                        });
+
+                                        id = sound.play();
+                                        audio.push(id.toString());*/
+
+                                        //sound.fade(prevVolume, vol, 500);
+                                    //}
+                                //}*/
+                            }
+
+                            //if ((diffLat > 0.0005) || (diffLng > 0.0005)) {
+                            /*if ((diffLat > 0.001) || (diffLng > 0.001)) {
+                                alert("second if");
+                                //alert(diffLat.toString() + " and " + diffLng.toString());
+                                //sound.stop();
+                                for (i = 0; i < audio.length; i++) {
+                                    sound.stop(audio[i]);
+                                }
+                            }*/
+                            //alert("index: " + index.toString());
+                            index += 1;
+                        });
+                    });
+
+                    d.resolve();
+                }, 10);
+                
+                //callback();
+                return d.promise();
+            }
+            
+            function checkFilesArray() {
+                var d = $.Deferred();
+                
+                setTimeout(function() {
+                    if (files.length > 0) {
+                        alert(files.toString());
+
+                        sound = new Howl({
+                            src: files,
+                            loop: true,
+                            html5: true
+                        });
+
+                        for (i = 0; i < files.length; i++) {
+                            id = sound.play();
+                            audio.push(id.toString());
+                        }
+
+                        files = [];
+                    }
+                    else {
+                        alert("nothing in files");
+                    }
+
+                    d.resolve();
+                }, 10);
+                
+                return d.promise();
+            }
+            
+            function Distance(p1lat, p1lng, p2lat, p2lng) {
+                //alert("calculating distance");
+                var R = 6378137; 	// Earth’s mean radius in meter
+                //var dLat = (p2.lat() - p1.lat()).toRad();
+                //alert("p2lat: " + p2lat.toString() + " p1.lat: " + p1lat.toString());
+                //var diff = p2lat - p1lat;
+                //alert(diff);
+                
+                p1lat = p1lat * Math.PI / 180;
+                p2lat = p2lat * Math.PI / 180;
+
+                //var dLat = Math.radians(dLat);
+                var dLat = (p2lat - p1lat) * Math.PI / 180;
+                //alert(dLat.toString());
+                var dLong = (p2lng - p1lng) * Math.PI / 180;
+                var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(p1lat) * Math.cos(p2lat) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                var d = R * c;		// d = the distance in meter
+                
+                //alert("distance: " + d.toString());
+
+                return d; 			
+            }
+            
+            function updateVolume(pos1lat, pos1lng, pos2lat, pos2lng, db) {
+                // Calculate distance between user and sound
+                //var position = {lat: soundLat, lng: soundLng}
+                //var panoLat = panorama.getPosition().lat();
+                //var panoLng = panorama.getPosition().lng();
+                //var distance = Distance(position, panorama.getPosition());
+                //var distance = Distance(position, panoLat, panoLng);
+                //var distance = Distance(lat, lng, panoLat, panoLng);
+                //var distance = Distance(dLat, dLng, pos1lat, pos1lng, pos2lat, pos2lng);
+                var distance = Distance(pos1lat, pos1lng, pos2lat, pos2lng);
+
+                // Calculate new volume based on distance
+                vol = calculateVolume(distance, db);
+
+                //alert("hello1");
+                // Set new volume
+                //sound.fade(prevVolume, vol, 500);
+
+                // Cache the new volume / position for checking next time 
+                prevVolume = vol;
+                //alert("hello2");
+                //obj.prevUserPosition.lat = lat;
+                //obj.prevUserPosition.lng = lng;
+                //alert(pos1lng.toString());
+                prevPos.lat() == pos2lat;
+                //alert(pos1lat.toString());
+                prevPos.lng() == pos2lng;
+                //alert("hello3");
+                //return vol;
+            };
+            
+            function calculateVolume(distance, db) {
+                // Calculate volume by using Inverse Square Law
+                vol = 1 / (distance * distance);
+                //alert("vol: " + vol.toString());
+                // Multiply distance volume by amplitude of sound (apply ceiling max of 1)
+                vol = Math.min((vol * db), 1);
+                
+                //alert("updated vol: " + vol.toString());
+                return vol;
+            };
+            
+            function setLocation(map, panoId, panorama) {
+                //alert("location set");
+                //alert(panoId);
+                panorama.setPano(panoId);  //test
+                map.setStreetView(panorama);
+            }
+            
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+                if (!event.target.matches('.dropbtn')) {
+
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+            
+            function checkBtn(event) {
+                stopAudio();
+                /*if (audio.length > 0) {
+                    alert("something in audio");
+                    //this._sound.stop();
+                    //this._sound.unload();
+                    sound.stop();
+                    sound.unload();
+                    audio = [];
+                    //for (i = 0; i < audio.length; i++) {
+                        //alert("array: " + audio.toString());
+                        //sound.stop(parseInt(audio[i], 10));
+                        //sound.unload();
+                        //audio.splice(0, 1);
+                        //alert("array cut: " + audio.toString());
+                    //}
+                }
+                else {
+                    alert("nothing in audio");
+                }*/
+                
+                //checkAudio(newLat, newLng);
+                var timearr = ["#t0000", "#t0200", "#t0400", "#t0600", "#t0800", "#t1000", "#t1200", "#t1400", "#t1600", "#t1800", "#t2000", "#t2200"];
+                var count = 0;
+                buttonid = event.target.id;
+                currTime = buttonid.split('t')[1];
+                alert("currTime: " + currTime);
+
+                str = "#";
+                result = str.concat(buttonid);
+                //alert("result: " + result);
+                
+                /*if (window.location.href.indexOf(currTime) > -1) {
+                    alert("excuse me");
+                    
+                    //$('.dropdown-content a').css('background-color', 'antiquewhite');
+                    //$(result).css('background-color', '#7171C6');
+                    
+                }*/
+                
+                for (i = 0; i < timearr.length; i++) {
+                    //alert("hello");
+                    //alert(timearr[i].toString());
+                    if (result == timearr[i].toString()) {
+                        //alert("the time to highlight" + timearr[i].toString());
+                        $(result).css('background-color', '#D2691E');
+                    }
+                    else {
+                        //alert("the time to not shine" + timearr[i].toString());
+                        $(timearr[i].toString()).css('background-color', '');
+                    }
+                }
+
+                currentPos = panorama.getPosition();
+                currentLat = currentPos.lat();
+                currentLng = currentPos.lng();
+                
+                //alert("current latitude: " + currentLat.toString());
+                
+                //alert("initial count: " + count);
+                
+                $.getJSON('data/location.json', function(data) {
+                    $.each(data.locations, function(i, f) {
+                        latDiff = Math.abs(currentLat - f.lat);
+                        lngDiff = Math.abs(currentLng - f.lng);
+                        
+                        if (count == 1) {
+                            return false;
+                        }
+                        
+                        if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 7) == f.lat.substr(0, 7))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 8) == f.lng.substr(0, 8))) && (currTime == f.time)) {
+                            
+                            //alert(f.name);
+                            //alert(lngDiff.toString());
+                            alert("inside checking of lat & lng");
+                            
+                            //alert(currentLat.toString().substr(0, 7));
+                            //alert(currentLng.toString().substr(0, 7));
+                            panoId = f.panoid;
+                            //alert(panoId);
+                            //alert(currentLat.toString());
+                            //alert(panoId);
+                            map.setCenter(new google.maps.LatLng(currentLat, currentLng));
+                            setLocation(map, panoId, panorama);
+                            count = count + 1;
+                            //alert("count in loop: " + count);
+                        }
+                    });
+                });
+                //alert("count outside loop: " + count);
+                //map.setCenter(new google.maps.LatLng(currentLat, currentLng));
+                //setLocation(map, panoId, panorama);
+            }
+            
+            function stopAudio() {
+                if (audio.length > 0) {
+                    alert("something in audio");
+                    sound.stop();
+                    sound.unload();
+                    audio = [];
+                }
+                else {
+                    alert("nothing in audio");
+                }
+            }
+            
+            function addMarker() {
+                
+                alert("current time in addMarker: " + currTime);
+                //if (window.location.href.indexOf("?dev=true") > -1) {
+                    $.getJSON('data/audio.json', function(data) {
+                        $.each(data.sounds, function(i, f) {
+                            if (currTime == f.time) {
+                                //alert("currently time is " + currTime.toString());
+                                var marker = new google.maps.Marker({
+                                    map 		: panorama,
+                                    title 		: f.name,
+                                    position 	: new google.maps.LatLng(f.lat, f.lng)
+                                    //draggable 	: mydata.draggable,
+                                    //icon 		: mydata.icon
+                                });
+                                markers.push(marker);
+                            }
+                        });
+                    });
+                //}
+            }
+            
+            /*$('#00').click(function() {
+                var map00 = new google.maps.Map(document.getElementById('map'), {
+                    center: tampines,
+                    zoom: 14
+                });
+                var pano00 = new google.maps.StreetViewPanorama(
+                document.getElementById('pano'), {
+                    position: tampines,
+                    pov: {
+                        heading: 34,
+                        pitch: 10
+                    }
+                });
+                
+                pano00.setPano(panoId);
+                //map00.setStreetView(pano00);
+            })
+            
+            $('#02').click(function() {
+                var map02 = new google.maps.Map(document.getElementById('map'), {
+                    center: tamp02,
+                    zoom: 14
+                });
+                var pano02 = new google.maps.StreetViewPanorama(
+                document.getElementById('pano'), {
+                    position: tamp02,
+                    pov: {
+                        heading: 34,
+                        pitch: 10
+                    }
+                });
+                
+                pano02.setPano(panoId3);
+                //map02.setStreetView(pano02);
+            })*/
+            
+            // Toggles between map and panorama view
+            /*function togglePanorama(){
+                if(isPanorama){
+                    map.streetView.setVisible(false);
+                    $('#message').empty().append('Click here to take a tour of our office.');
+                    isPanorama = 0;
+                } else{
+                    map.streetView.setVisible(true);
+                    $('#message').empty().append('Back to the map.');
+                    isPanorama = 1;
+                }
+            }*/
+            
+            alert("test");
+            
+        </script>
+        
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Ij9PIGUhjGn9OUqEgMy8bwEqBkWaCPc&callback=initialize">
+        </script>
+    </body>
+</html>

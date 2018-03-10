@@ -1,0 +1,431 @@
+	{
+	    "id": "pano",
+        "id2": "map",
+
+	    "lat": "1.34946590020551",
+	    "lng": "103.94630536437035",
+	    "heading": "60",
+	    "pitch": "1",
+	    
+	    "sounds": [
+	        {
+	            "name": "streetmusic",
+	            "lat": "1.353625854569561",
+	            "lng": "103.94506115466356",
+                "time": "1200",
+	            "src": [
+	                "audio/29 Jan 18 1.22pm Mrt Exit.mp3"
+	            ],
+	            "db": "50",
+	            "pause": "1000"
+	        },
+	        {
+	            "name": "streetmusic",
+	            "lat": "1.353628536030063",
+	            "lng": "103.9450628310442",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 4.16pm Mrt Exit.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "ventilation",
+	            "lat": "1.353522618337717",
+	            "lng": "103.94516106694937",
+                "time": "1200",
+	            "src": [
+	                "audio/29 Jan 18 1.30pm Ventilation Point.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "ventilation",
+	            "lat": "1.353521612789986",
+	            "lng": "103.9451590552926",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 4.24pm Beside Mrt Ventilation.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "trafficlight",
+	            "lat": "1.353321173599936",
+	            "lng": "103.94532669335604",
+                "time": "1200",
+	            "src": [
+	                "audio/29 Jan 18 1.32pm Traffic Light Beside Liho.mp3"
+	            ],
+	            "db": "70",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "trafficlight",
+	            "lat": "1.352569358898381",
+	            "lng": "103.94553154706955",
+                "time": "1200",
+	            "src": [
+	                "audio/29 Jan 18 1.47pm Crossing Road.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "trafficlight",
+	            "lat": "1.352567012619413",
+	            "lng": "103.94553121179342",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 4.30pm Before Crossing Road.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+	        {
+	            "name": "trafficlight",
+	            "lat": "1.35231797185303",
+	            "lng": "103.94572500139475",
+                "time": "1200",
+	            "src": [
+	                "audio/29 Jan 18 1.52pm After Crossing At HDB Side.mp3"
+	            ],
+	            "db": "70",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "construction",
+	            "lat": "1.351797987837843",
+	            "lng": "103.94617795944214",
+                "time": "1400",
+	            "src": [
+	                "audio/29 Jan 18 1.59pm Second Pillar From Road Junction - Drilling And Traffic Light Sound.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.351827987837843",
+	            "lng": "103.94617795944214",
+                "time": "1400",
+	            "src": [
+	                "audio/29 Jan 18 2.01pm Second Pillar From Road Junction - Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "construction",
+	            "lat": "1.351440012578382",
+	            "lng": "103.94627803157568",
+                "time": "1400",
+	            "src": [
+	                "audio/29 Jan 18 2.05pm Fifth Pillar From Road Junction - Drilling.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "chatting",
+	            "lat": "1.351341364638967",
+	            "lng": "103.94668077149153",
+                "time": "1400",
+	            "src": [
+	                "audio/29 Jan 18 2.09pm Seventh Pillar - Ppl Talking.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "truck",
+	            "lat": "1.351241364638967",
+	            "lng": "103.94672077149153",
+                "time": "1400",
+	            "src": [
+	                "audio/29 Jan 18 2.10pm Seventh Pillar - Truck Driving.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.351141364638967",
+	            "lng": "103.94682077149153",
+                "time": "1400",
+	            "src": [
+	                "audio/29 Jan 18 2.11pm Seventh Pillar - Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "construction",
+	            "lat": "1.35078853250815",
+	            "lng": "103.94703291356564",
+                "time": "1400",
+	            "src": [
+	                "audio/29 Jan 18 2.15pm Tenth Pillar - Construction.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.35098853250815",
+	            "lng": "103.94693291356564",
+                "time": "1400",
+	            "src": [
+	                "audio/29 Jan 18 2.16pm Tenth Pillar - Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "trafficlight",
+	            "lat": "1.349306353026617",
+	            "lng": "103.94927242940664",
+                "time": "1400",
+	            "src": [
+	                "audio/29 Jan 18 2.25pm End Of Road Under Mrt Tracks - Traffic Light.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348755531634722",
+	            "lng": "103.94735176116228",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.50pm Shell.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "people walking",
+	            "lat": "1.3486484",
+	            "lng": "103.94662189999997",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.46pm Towards Shell Second Pathway Into HDB - Stepping On Manhole.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.3484386",
+	            "lng": "103.94592050000006",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.43pm Towards Shell First Pathway Into HDB - Traffic, Bus, Bicycle, Cars.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348306166271764",
+	            "lng": "103.94552484154701",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.01pm End Of Route Beside Bus stop - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348085615651881",
+	            "lng": "103.94516710191965",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.04pm Bus Stop - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "cars",
+	            "lat": "1.346195180947949",
+	            "lng": "103.94499611109495",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.32pm Before Entering Round Market - Cars Waiting To Leave Carpark.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "truck",
+	            "lat": "1.345997087439304",
+	            "lng": "103.94478287547827",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.12pm Round Market Entrance - Truck Driving Backwards.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "streetmusic",
+	            "lat": "1.345962228343056",
+	            "lng": "103.94439026713371",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.19pm Round Market Walk Straight Turn - Music 2.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.345587157843243",
+	            "lng": "103.94424006342888",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.23pm Round Market Walk Straight Turn Facing Safra - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "canteen",
+	            "lat": "1.345187215188603",
+	            "lng": "103.94468281529282",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.26pm Round Market Canteen Beside.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "streetmusic",
+	            "lat": "1.345737320123547",
+	            "lng": "103.9445361122489",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.15pm Centre Of Round Market - Music And Ventilation.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.352030720223991",
+	            "lng": "103.94534479826689",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 4.43pm Midpoint.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "construction",
+	            "lat": "1.351267604966835",
+	            "lng": "103.9446174840449",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 4.52pm Blk 156 - Construction And Traffic And Footsteps.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "bird",
+	            "lat": "1.350643404253056",
+	            "lng": "103.94476478923298",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 4.55pm Blk 160 - Bird Chirping.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "karaoke",
+	            "lat": "1.350643404253056",
+	            "lng": "103.94486478923298",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 4.55pm Blk 160 - Construction And Karaoke And Footsteps.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "cars",
+	            "lat": "1.349090159878845",
+	            "lng": "103.94721865653992",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 5.54pm Blk 166.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "bird",
+	            "lat": "1.349378752588079",
+	            "lng": "103.94721999764442",
+                "time": "1600",
+	            "src": [
+	                "audio/29 Jan 18 6.00pm Blk 163 bird chirping.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "chatting",
+	            "lat": "1.3494377",
+	            "lng": "103.94630570000004",
+                "time": "0000",
+	            "src": [
+	                "audio/29 Jan 18 6.05pm Blk 164 Ppl Talking.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "bird",
+	            "lat": "1.349464559472963",
+	            "lng": "103.94630536437035",
+                "time": "1800",
+	            "src": [
+	                "audio/29 Jan 18 6.08pm Blk 164 Bird Chirping.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "lift",
+	            "lat": "1.34946590020551",
+	            "lng": "103.94630536437035",
+                "time": "2200",
+	            "src": [
+	                "audio/29 Jan 18 6.09pm Blk 164 Lift Door Closing.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "lift",
+	            "lat": "1.349468581670604",
+	            "lng": "103.94630670547485",
+                "time": "2000",
+	            "src": [
+	                "audio/29 Jan 18 6.09pm Blk 164 lift going up.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        }
+
+	    ]
+	}
