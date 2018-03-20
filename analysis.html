@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Collapsible sidebar using Bootstrap 3</title>
+
+         <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="css/style5.css">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+        <script>
+            $(function() {
+                var count = 1;
+                $.getJSON('data/location.json', function(data) {
+                    $.each(data.locations, function(i, f) {
+                        var tblRow = "<tr>" + "<td>" + count + "</td>" + "<td>" + f.name + "</td>" +
+                        "<td>" + f.panoid + "</td>" + "<td>" + f.lat + "</td>" + "<td>" + f.lng + "</td>" + "</tr>"
+                        $(tblRow).appendTo("#panoid tbody");
+                        count += 1;
+                    });
+                });
+            });
+            
+            $(function() {
+                var count = 1;
+                $.getJSON('data/audio.json', function(data) {
+                    $.each(data.sounds, function(i, f) {
+                        var tblRow = "<tr>" +  "<td>" + count + "</td>" + "<td>" + f.name + "</td>" + "<td>" + f.lat + "</td>" + "<td>" + f.lng + "</td>" + "<td>" + f.time + "</td>" +  "<td>" + f.src + "</td>" + "</tr>"
+                        $(tblRow).appendTo("#record tbody");
+                        count += 1;
+                    });
+                });
+            });
+        </script>
+        
+    </head>
+    <body>
+        
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+                
+            <script>
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function() {scrollFunction()};
+
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("myBtn").style.display = "block";
+                    } else {
+                        document.getElementById("myBtn").style.display = "none";
+                    }
+                }
+
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            </script>
+        
+        <div class="wrapper">
+            
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Street Sound Simulation</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>CG4001 BEng Dissertation</p>
+                    <li>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="#">Home 1</a></li>
+                            <li><a href="#">Home 2</a></li>
+                            <li><a href="#">Home 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="start.html">Street View</a>
+                    </li>
+                    <li>
+                        <a href="#timeSubmenu" data-toggle="collapse" aria-expanded="false">Time</a>
+                        <ul class="collapse list-unstyled" id="timeSubmenu">
+                            <li><a id="t0000" href="#0000" onclick="checkBtn(event)">0000</a></li>
+                            <li><a id="t0200" href="#0200" onclick="checkBtn(event)">0200</a></li>
+                            <li><a id="t0400" href="#0400" onclick="checkBtn(event)">0400</a></li>
+                            <li><a id="t0600" href="#0600" onclick="checkBtn(event)">0600</a></li>
+                            <li><a id="t0800" href="#0800" onclick="checkBtn(event)">0800</a></li>
+                            <li><a id="t1000" href="#1000" onclick="checkBtn(event)">1000</a></li>
+
+                            <li><a id="t1200" href="#1200" onclick="checkBtn(event)">1200</a></li>
+                            <li><a id="t1400" href="#1400" onclick="checkBtn(event)">1400</a></li>
+                            <li><a id="t1600" href="#1600" onclick="checkBtn(event)">1600</a></li>
+                            <li><a id="t1800" href="#1800" onclick="checkBtn(event)">1800</a></li>
+                            <li><a id="t2000" href="#2000" onclick="checkBtn(event)">2000</a></li>
+                            <li><a id="t2200" href="#2200" onclick="checkBtn(event)">2200</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="analysis.html">Data</a>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Existing Projects</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="http://www.amplifon.ie/sounds-of-street-view/">Sounds of Street View</a></li>
+                            <li><a href="http://soundcityproject.com/#/">Sound City Project</a></li>
+                            <li><a href="https://pregonerosdemedellin.com/">Pregoneros de Medellín</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                    <li><a href="https://github.com/yujulucy/Street-Sound-Analysis-and-Simulation" class="download">Download source</a></li>
+                    <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="navbar-btn">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#">Graph</a></li>
+                                <li><a href="#">Table (Sound vs Time)</a></li>
+                                <li><a href="#panoidTable">Panorama ID</a></li>
+                                <li><a href="#recordTable">Recording</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <h2>Graph</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                <div class="line"></div>
+
+                <h2 id="table">Table (Sound vs Time)</h2>
+
+                <div class="line"></div>
+
+                <h2 id="panoidTable">Panorama ID</h2>
+                <div class="profile">
+                    <table id= "panoid" border="2">
+                        <thead>
+                            <th style="padding: 10px">Number</th>
+                            <th style="padding: 10px">Location Name</th>
+                            <th style="padding: 10px">Pano ID</th>
+                            <th style="padding: 10px">Latitude</th>
+                            <th style="padding: 10px">Longitude</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="line"></div>
+
+                <h2 id="recordTable">Recording</h2>
+                <div class="profile">
+                    <table id= "record" border="2">
+                        <thead>
+                            <th style="padding: 10px">Number</th>
+                            <th style="padding: 10px">Classification</th>
+                            <th style="padding: 10px">Latitude</th>
+                            <th style="padding: 10px">Longitude</th>
+                            <th style="padding: 10px">Time</th>
+                            <th style="padding: 10px">Audio Source</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                     $(this).toggleClass('active');
+                 });
+             });
+         </script>
+    </body>
+</html>

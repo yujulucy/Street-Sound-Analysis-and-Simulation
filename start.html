@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Street View side-by-side</title>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!-- Load the Sounds of Street View code -->
+        <script src="js/sosv.min.js"></script>
+        <!--script src="js/sosv.js"></script-->
+        <script src="howler.js-master/src/howler.core.js"></script>
+        <script src="data/audio.json"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style5.css">
+        
+        <!--base href="https://www.w3schools.com/images/"-->
+
+        <!-- Your code to create an instance of a Sound of Street View -->
+        <script>
+            $(function(){
+                // Create your Sound of Street View - make sure the path points to your JSON file
+                //new SOSV('data/audio.json');
+            });
+        </script>
+        
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #map, #pano {
+                float: left;
+                height: 90%;
+                width: 50%;
+            }
+        
+            .dropbtn {
+                background-color: #4169E1;
+                color: white;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 54px;
+                padding-right: 54px;
+                font-size: 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #191970;
+            }
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 150px;
+                overflow: auto;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+            
+            /*.dropdown-content a  {
+                color: #000000;
+                text-align: center;
+                background-color: antiquewhite;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }*/
+            
+            /*.dropdown a:hover, .dropdown a:focus {
+                background-color: #7171C6;
+            }*/
+
+            /*.dropdown-content a {*/
+            /*#0000, #0200, #0400, #0600, #0800, #1000, #1200, #1400, #1600, #1800, #2000, #2200 {*/
+            #t0000, #t0200, #t0400, #t0600, #t0800, #t1000, #t1200, #t1400, #t1600, #t1800, #t2000, #t2200 {
+                //color: #000000;
+                //text-align: center;
+                //background-color: antiquewhite;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+            
+            #t0000:hover, #t0200:hover, #t0400:hover, #t0600:hover, #t0800:hover, #t1000:hover, #t1200:hover, #t1400:hover, #t1600:hover, #t1800:hover, #t2000:hover, #t2200:hover {
+                background-color: #7171C6;
+            }
+
+            .show {display:block;}
+        </style>
+    </head>
+    <body>
+        
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Street Sound Simulation</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>CG4001 BEng Dissertation</p>
+                    <li>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="#">Home 1</a></li>
+                            <li><a href="#">Home 2</a></li>
+                            <li><a href="#">Home 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="start.html">Street View</a>
+                    </li>
+                    <li>
+                        <a href="#timeSubmenu" data-toggle="collapse" aria-expanded="false">Time</a>
+                        <ul class="collapse list-unstyled" id="timeSubmenu">
+                            <li><a id="t0000" href="#0000" onclick="checkBtn(event)">0000</a></li>
+                            <li><a id="t0200" href="#0200" onclick="checkBtn(event)">0200</a></li>
+                            <li><a id="t0400" href="#0400" onclick="checkBtn(event)">0400</a></li>
+                            <li><a id="t0600" href="#0600" onclick="checkBtn(event)">0600</a></li>
+                            <li><a id="t0800" href="#0800" onclick="checkBtn(event)">0800</a></li>
+                            <li><a id="t1000" href="#1000" onclick="checkBtn(event)">1000</a></li>
+
+                            <li><a id="t1200" href="#1200" onclick="checkBtn(event)">1200</a></li>
+                            <li><a id="t1400" href="#1400" onclick="checkBtn(event)">1400</a></li>
+                            <li><a id="t1600" href="#1600" onclick="checkBtn(event)">1600</a></li>
+                            <li><a id="t1800" href="#1800" onclick="checkBtn(event)">1800</a></li>
+                            <li><a id="t2000" href="#2000" onclick="checkBtn(event)">2000</a></li>
+                            <li><a id="t2200" href="#2200" onclick="checkBtn(event)">2200</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="analysis.html">Data</a>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Existing Projects</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="http://www.amplifon.ie/sounds-of-street-view/">Sounds of Street View</a></li>
+                            <li><a href="http://soundcityproject.com/#/">Sound City Project</a></li>
+                            <li><a href="https://pregonerosdemedellin.com/">Pregoneros de Medellín</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                    <li><a href="https://github.com/yujulucy/Street-Sound-Analysis-and-Simulation" class="download">Download source</a></li>
+                    <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="navbar-btn">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+
+                        <!--div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                            </ul>
+                        </div-->
+                    </div>
+                </nav>
+                
+                <div id="map"></div>
+                <div id="pano"></div>
+                
+                
+                <!--div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Time</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a id="t0000" href="#0000" onclick="checkBtn(event)">0000</a>
+                        <a id="t0200" href="#0200" onclick="checkBtn(event)">0200</a>
+                        <a id="t0400" href="#0400" onclick="checkBtn(event)">0400</a>
+                        <a id="t0600" href="#0600" onclick="checkBtn(event)">0600</a>
+                        <a id="t0800" href="#0800" onclick="checkBtn(event)">0800</a>
+                        <a id="t1000" href="#1000" onclick="checkBtn(event)">1000</a>
+
+                        <a id="t1200" href="#1200" onclick="checkBtn(event)">1200</a>
+                        <a id="t1400" href="#1400" onclick="checkBtn(event)">1400</a>
+                        <a id="t1600" href="#1600" onclick="checkBtn(event)">1600</a>
+                        <a id="t1800" href="#1800" onclick="checkBtn(event)">1800</a>
+                        <a id="t2000" href="#2000" onclick="checkBtn(event)">2000</a>
+                        <a id="t2200" href="#2200" onclick="checkBtn(event)">2200</a>
+                    </div>
+                </div-->
+        
+                <div>
+                    <script>
+                        var panoId;
+                        //var defaultPos = {lat: 1.34946590020551, lng: 103.94630536437035}
+                        var defaultPos = {lat: 1.353628536030063, lng: 103.9450628310442}
+                        var prevVolume = 0;
+                        var vol = 0;
+                        var prevPos;
+                        //var sound = null;
+
+                        audio = [];
+                        files = [];
+                        volArr = [];
+                        panPosArr = [];
+                        indexArr = [];
+                        sound = [];
+
+                        var currTime = "0000";
+
+                        function initialize() {
+
+                            //var map = new google.maps.Map(document.getElementById('map'));
+                            map = new google.maps.Map(document.getElementById('map'), {
+                                //center: fenway,
+                                //center: tampines,
+                                center: defaultPos,
+                                zoom: 14,
+                                mapTypeControl: true,
+                                scaleControl: true,
+                                streetViewControl: true
+                            });
+
+                            //panorama = new SOSV((document.getElementById('pano')), 'data/audio.json');
+                            //panorama = document.getElementById('pano');
+                            //panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
+                            panorama = new google.maps.StreetViewPanorama(
+                                document.getElementById('pano'), {
+                                //position: fenway,
+                                //position: tampines,
+                                position: defaultPos,
+                                pov: {
+                                    heading: 34,
+                                    pitch: 10
+                                }
+                            });
+
+                            prevPos = panorama.getPosition();
+
+                            newPos = panorama.getPosition();
+                            newLat = newPos.lat();
+                            newLng = newPos.lng();
+
+                            if (window.location.href.indexOf("?dev=true") > -1) {
+                                alert("detected dev");
+                                //timeVar = checkCurrentTime(newLat, newLng);
+                                addMarker();
+                            }
+
+                            //checkAudio(newLat, newLng);
+
+                            /*google.maps.event.addListener(panorama, 'pano_changed', function() {
+                                //alert("panorama changed");
+                                newPos = panorama.getPosition();
+                                newLat = newPos.lat();
+                                newLng = newPos.lng();
+                                heading = panorama.getPov().heading;
+
+                                stopAudio();
+
+                                checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
+                            });*/
+
+                            google.maps.event.addListener(panorama, 'position_changed', function() {
+                            //panorama.addListener('position_changed', function() {
+                                //alert("position changed");
+                                newPos = panorama.getPosition();
+
+                                newLat = newPos.lat();
+                                newLng = newPos.lng();
+                                heading = panorama.getPov().heading;
+
+                                stopAudio();
+
+                                checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
+
+                            });
+
+                            google.maps.event.addListener(panorama, 'pov_changed', function() {
+                                //alert("heading changed");
+                                newPos = panorama.getPosition();
+                                newLat = newPos.lat();
+                                newLng = newPos.lng();
+                                heading = panorama.getPov().heading;
+                                //alert(heading.toString());
+
+                                //stopAudio();
+
+                                //checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
+
+                                //updatePanPos();
+                            });
+
+                            map.setStreetView(panorama);
+                        }
+
+                        //google.maps.event.addDomListener(window, 'load', initialize);
+
+                        function checkCurrentTime(lat, lng) {
+
+                            var timearr = ["#t0000", "#t0200", "#t0400", "#t0600", "#t0800", "#t1000", "#t1200", "#t1400", "#t1600", "#t1800", "#t2000", "#t2200"];
+
+                            var flag = true;
+
+                            $.getJSON('data/location.json', function(data) {
+                                $.each(data.locations, function(i, f) {
+                                    if (flag) {
+                                        if ((lat.toString() == f.lat) && (lng.toString() == f.lng)) {
+                                            hexSign = "#t";
+                                            validateTime = hexSign.concat(f.time);
+
+                                            supposedTime = f.time;
+
+                                            for (i = 0; i < timearr.length; i++) {
+                                                if (validateTime == timearr[i].toString()) {
+                                                    //alert("the time to highlight" + timearr[i].toString());
+                                                    $(validateTime).css('background-color', '#D2691E');
+                                                }
+                                                else {
+                                                    //alert("the time to not shine" + timearr[i].toString());
+                                                    $(timearr[i].toString()).css('background-color', '');
+                                                }
+                                            }
+                                            flag = false;
+
+                                            //alert("supposedTime when setting: " + supposedTime);
+                                        }
+                                        else {
+                                            for (i = 0; i < timearr.length; i++) {
+                                                $(timearr[i].toString()).css('background-color', '');
+                                            }
+                                        }
+                                    }
+                                });
+                            });
+                            //alert("supposed time = " + supposedTime);
+                            return supposedTime;
+                        }
+
+                        function sleep (time) {
+                            return new Promise((resolve) => setTimeout(resolve, time));
+                        }
+
+                        function defaultCall(diffLat, diffLng, jsTime, actualTime) {
+                            //if ((newLat.toString() == f.lat) && (newLng.toString() == f.lng)) {
+                                if ((diffLat < 0.0005) && (diffLng < 0.0005) && (jsTime == actualTime)) { //&& (f.time == "0000")) {
+                                    alert("i'm in if loop");
+                                    alert(f.time);
+                                    alert("f.lat: " + f.lat + " & f.lng: " + f.lng);
+                                    alert("lat: " + newLat + " & lng: " + newLng);
+
+                                    files.push(f.src.toString());
+
+                                }
+                            //}
+                        }
+
+                        function checkAudio(newLat, newLng, heading) {//, callback) {
+                            var d = $.Deferred();
+
+                            setTimeout(function() {
+                                //var audio;
+                                var id;
+                                var index = 0;
+                                const howlerList = {};
+                                //alert(newLat.toString());
+                                //alert("got here");
+                                supposedTime = checkCurrentTime(newLat, newLng);
+
+                                $.getJSON('data/audio.json', function(data) {
+                                    $.each(data.sounds, function(i, f) {
+                                        diffLat = Math.abs(newLat - f.lat);
+                                        diffLng = Math.abs(newLng - f.lng);
+
+                                        if ((window.location.href.substr(window.location.href.lastIndexOf('#') + 1)) == f.time) {
+                                            if (index == 0) {
+                                                //alert("first if");
+                                            }
+
+                                            panPos = updatePan(diffLat, diffLng, heading);
+                                            //alert("panPos in check audio = " + panPos.toString());
+                                            vol = updateVolume(f.lat, f.lng, newLat, newLng, f.db);
+
+                                            var loop = (!parseFloat(f.pause)) ? true : false;
+
+                                            if ((diffLat < 0.0005) && (diffLng < 0.0004)) {// && (f.time == currTime)) {
+                                                files.push(f.src.toString());
+                                                volArr.push(vol.toString());
+                                                panPosArr.push(panPos.toString());
+
+                                            }
+
+                                        }
+                                        else if (!window.location.href.endsWith("00")) {
+
+                                            if (index == 0) {
+                                                //alert("else if");
+                                            }
+
+                                            if ((diffLat < 0.0005) && (diffLng < 0.0004) && (f.time == supposedTime)) {
+                                                panPos = updatePan(diffLat, diffLng, heading);
+                                                //alert("panPos in check audio default = " + panPos.toString());
+                                                vol = updateVolume(f.lat, f.lng, newLat, newLng, f.db);
+
+                                                files.push(f.src.toString());
+                                                volArr.push(vol.toString());
+                                                panPosArr.push(panPos.toString());
+                                            }
+
+                                        }
+
+                                        index += 1;
+                                    });
+                                });
+
+                                d.resolve();
+                            }, 10);
+
+                            //callback();
+                            return d.promise();
+                        }
+
+                        function checkFilesArray() {
+                            var d = $.Deferred();
+
+                            //alert("volume in checkfile: " +　vol.toString());
+
+                            setTimeout(function() {
+                                if (files.length > 0) {
+                                    //alert(files.toString());
+
+                                    /*sound = new Howl({
+                                        src: files,
+                                        loop: true,
+                                        html5: true
+                                    });*/
+
+                                    for (i = 0; i < files.length; i++) {
+                                        sound[i] = new Howl({
+                                            src: files[i],
+                                            loop: true,
+                                            html5: true
+                                        });
+
+                                        //alert("filename in check file: " + files[i]);
+                                        //alert("vol in check file: " + volArr[i]);
+                                        id = sound[i].play();
+                                        sound[i].volume(volArr[i], id);
+                                        alert("id in loop" + id);
+                                        //alert("vol: " + volArr[i]);
+                                        //alert("panPos in check file = " + panPos.toString());
+                                        //sound[i].pos3d(panPosArr[i], 1, 1, id);
+                                        audio.push(id.toString());
+                                    }
+
+                                    files = [];
+                                    volArr = [];
+                                }
+                                else {
+                                    //alert("nothing in files");
+                                }
+
+                                d.resolve();
+                            }, 10);
+
+                            return d.promise();
+                        }
+
+                        function stopAudio() {
+                            if (audio.length > 0) {
+                                //alert("something in audio");
+                                for (i = 0; i < sound.length; i++) {
+                                    sound[i].stop();
+                                }
+                                //sound.stop();
+                                //sound.unload();
+                                audio = [];
+                                sound = [];
+                            }
+                            else {
+                                //alert("nothing in audio");
+                            }
+                        }
+
+                        function Distance(p1lat, p1lng, p2lat, p2lng) {
+                            //alert("calculating distance");
+                            var R = 6378137; 	// Earth’s mean radius in meter
+                            p1lat = p1lat * Math.PI / 180;
+                            p2lat = p2lat * Math.PI / 180;
+
+                            //var dLat = Math.radians(dLat);
+                            var dLat = (p2lat - p1lat) * Math.PI / 180;
+                            //alert(dLat.toString());
+                            var dLong = (p2lng - p1lng) * Math.PI / 180;
+                            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(p1lat) * Math.cos(p2lat) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
+                            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                            var d = R * c;		// d = the distance in meter
+
+                            return d; 			
+                        }
+
+                        function updateVolume(pos1lat, pos1lng, pos2lat, pos2lng, db) {
+                            // Calculate distance between user and sound
+                            var distance = Distance(pos1lat, pos1lng, pos2lat, pos2lng);
+
+                            // Calculate new volume based on distance
+                            vol = calculateVolume(distance, db);
+
+                            // Cache the new volume / position for checking next time 
+                            prevVolume = vol;
+                            
+                            prevPos.lat() == pos2lat;
+                            prevPos.lng() == pos2lng;
+                            return vol;
+                        };
+
+                        function calculateVolume(distance, db) {
+                            // Calculate volume by using Inverse Square Law
+                            vol = 1 / (distance * distance);
+                            //alert("vol: " + vol.toString());
+                            // Multiply distance volume by amplitude of sound (apply ceiling max of 1)
+                            vol = Math.min((vol * db), 1);
+
+                            //alert("updated vol: " + vol.toString());
+                            return vol;
+                        };
+
+                        //function updatePan(lat, lng, heading) {
+                        function updatePan(xDiff, yDiff, heading) {
+                            //var xDiff = obj.data.lat - lat;
+                            //var yDiff = obj.data.lng - lng;
+                            var angle = Math.atan2(yDiff, xDiff) * (180/Math.PI);
+
+                            // Add POV heading offset
+                            angle -= heading;
+
+                            // Convert angle to range between -180 and +180
+                            if (angle < -180) {
+                                angle += 360;
+                            }
+                            else if (angle > 180) {
+                                angle -= 360;
+                            }
+
+                            // Calculate panPosition, as a range between -1 and +1
+                            var panPosition = (angle/90);
+                            if (Math.abs(panPosition) > 1) {
+                                var x = Math.abs(panPosition) - 1;
+                                panPosition = (panPosition > 0) ? 1 - x : -1 + x;
+                            }
+
+                            // Set the new pan poition
+                            //obj.sound.pos3d(panPosition, 1, 1);
+
+                            // Apply lowpass filter *if* the sound is behind us (11,000hz = filter fully open)
+                            var freq = 11000;
+                            if (Math.abs(angle) > 90) {
+                                // User's back is to the sound - progressively apply filter
+                                freq -= (Math.abs(angle) - 90) * 55;
+                            }
+
+                            return panPosition;
+                        };
+
+                        function setLocation(map, panoId, panorama) {
+                            panorama.setPano(panoId);  //test
+                            map.setStreetView(panorama);
+                        }
+
+                        function myFunction() {
+                            document.getElementById("myDropdown").classList.toggle("show");
+                        }
+
+                        // Close the dropdown if the user clicks outside of it
+                        window.onclick = function(event) {
+                            if (!event.target.matches('.dropbtn')) {
+
+                                var dropdowns = document.getElementsByClassName("dropdown-content");
+                                var i;
+                                for (i = 0; i < dropdowns.length; i++) {
+                                    var openDropdown = dropdowns[i];
+                                    if (openDropdown.classList.contains('show')) {
+                                        openDropdown.classList.remove('show');
+                                    }
+                                }
+                            }
+                        }
+
+                        function checkBtn(event) {
+                            stopAudio();
+                            
+                            var timearr = ["#t0000", "#t0200", "#t0400", "#t0600", "#t0800", "#t1000", "#t1200", "#t1400", "#t1600", "#t1800", "#t2000", "#t2200"];
+                            var count = 0;
+                            buttonid = event.target.id;
+                            currTime = buttonid.split('t')[1];
+
+                            str = "#";
+                            result = str.concat(buttonid);
+
+                            for (i = 0; i < timearr.length; i++) {
+                                if (result == timearr[i].toString()) {
+                                    alert("result in true: " + result);
+                                    $(result).css('background-color', '#D2691E');
+                                }
+                                else {
+                                    alert("result in false: " + result);
+                                    $(timearr[i].toString()).css('background-color', '');
+                                }
+                            }
+
+                            currentPos = panorama.getPosition();
+                            currentLat = currentPos.lat();
+                            currentLng = currentPos.lng();
+
+                            $.getJSON('data/location.json', function(data) {
+                                $.each(data.locations, function(i, f) {
+                                    latDiff = Math.abs(currentLat - f.lat);
+                                    lngDiff = Math.abs(currentLng - f.lng);
+
+                                    if (count == 1) {
+                                        return false;
+                                    }
+
+                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 7) == f.lat.substr(0, 7))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 8) == f.lng.substr(0, 8))) && (currTime == f.time)) {
+
+                                        panoId = f.panoid;
+                                        map.setCenter(new google.maps.LatLng(currentLat, currentLng));
+                                        setLocation(map, panoId, panorama);
+                                        count = count + 1;
+                                    }
+                                });
+                            });
+                        }
+
+                        function addMarker() {
+                            //alert("why " + lat.toString() + " " + lng.toString());
+                            currTime = checkCurrentTime(lat, lng);
+                            alert("whyyyyyyyyy");
+                            alert("current time in addMarker: " + currTime);
+
+                            $.getJSON('data/audio.json', function(data) {
+                                $.each(data.sounds, function(i, f) {
+                                    if (currTime == f.time) {
+                                        //alert("currently time is " + currTime.toString());
+                                        var marker = new google.maps.Marker({
+                                            map 		: panorama,
+                                            title 		: f.name,
+                                            position 	: new google.maps.LatLng(f.lat, f.lng)
+                                            //draggable 	: mydata.draggable,
+                                            //icon 		: mydata.icon
+                                        });
+                                        markers.push(marker);
+                                    }
+                                });
+                            });
+                        }
+
+                        alert("test");
+
+                    </script>
+                </div>
+            </div>
+        <!--/div-->
+        
+
+        </div>
+        
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+
+                    $('#sidebar').toggleClass('active');
+                    $(this).toggleClass('active');
+
+                    /*if ($('#sidebar').hasClass('active')) {
+                        $('#map').css('width', '50%');
+                        $('#pano').css('width', '50%');
+                    }
+                    else {
+                        $('#map').css('width', '');
+                        $('#pano').css('width', '');
+                    }*/
+
+                });
+            });
+         </script>
+        
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Ij9PIGUhjGn9OUqEgMy8bwEqBkWaCPc&callback=initialize">
+        </script>
+        
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!--script src="js/bootstrap.min.js"></script-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>

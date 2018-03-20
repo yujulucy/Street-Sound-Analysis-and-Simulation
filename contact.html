@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style_contact.css">
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type='text/css'> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet"> 
+    
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style5.css">
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <body>
+        <div class="wrapper">
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Street Sound Simulation</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>CG4001 BEng Dissertation</p>
+                    <li>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="#">Home 1</a></li>
+                            <li><a href="#">Home 2</a></li>
+                            <li><a href="#">Home 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="start.html">Street View</a>
+                    </li>
+                    <li>
+                        <a href="#timeSubmenu" data-toggle="collapse" aria-expanded="false">Time</a>
+                        <ul class="collapse list-unstyled" id="timeSubmenu">
+                            <li><a id="t0000" href="#0000" onclick="checkBtn(event)">0000</a></li>
+                            <li><a id="t0200" href="#0200" onclick="checkBtn(event)">0200</a></li>
+                            <li><a id="t0400" href="#0400" onclick="checkBtn(event)">0400</a></li>
+                            <li><a id="t0600" href="#0600" onclick="checkBtn(event)">0600</a></li>
+                            <li><a id="t0800" href="#0800" onclick="checkBtn(event)">0800</a></li>
+                            <li><a id="t1000" href="#1000" onclick="checkBtn(event)">1000</a></li>
+
+                            <li><a id="t1200" href="#1200" onclick="checkBtn(event)">1200</a></li>
+                            <li><a id="t1400" href="#1400" onclick="checkBtn(event)">1400</a></li>
+                            <li><a id="t1600" href="#1600" onclick="checkBtn(event)">1600</a></li>
+                            <li><a id="t1800" href="#1800" onclick="checkBtn(event)">1800</a></li>
+                            <li><a id="t2000" href="#2000" onclick="checkBtn(event)">2000</a></li>
+                            <li><a id="t2200" href="#2200" onclick="checkBtn(event)">2200</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="analysis.html">Data</a>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Existing Projects</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="http://www.amplifon.ie/sounds-of-street-view/">Sounds of Street View</a></li>
+                            <li><a href="http://soundcityproject.com/#/">Sound City Project</a></li>
+                            <li><a href="https://pregonerosdemedellin.com/">Pregoneros de Medellín</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                    <li><a href="https://github.com/yujulucy/Street-Sound-Analysis-and-Simulation" class="download">Download source</a></li>
+                    <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="navbar-btn">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+
+                <section id="contactFormSection" class="content-section text-center">
+                    <div class="contact-section">
+                        <div class="container">
+                            <h2>Contact Me</h2>
+                            <p>Feel free to share your feelings by filling in this form or visiting my social network sites!</p>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <form class="form-horizontal" id="contactForm">
+                                        <div class="form-group">
+                                            <label for="inputName" style="font-family: 'Roboto Condensed', sans-serif; font-size: 2.5vh;">Name</label>
+                                            <input type="text" class="form-control" id="inputName" placeholder="Jane Doe" min="3" required data-error-msg="Must contain at least 3 characters">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail" style="font-family: 'Roboto Condensed', sans-serif; font-size: 2.5vh;">Email</label>
+                                            <input type="email" required class="form-control" id="inputEmail" placeholder="jane.doe@example.com" required data-error-msg="The email is required in valid format">
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="inputText" style="font-family: 'Roboto Condensed', sans-serif; font-size: 2.5vh;">Your Message</label>
+                                            <textarea class="form-control" id="inputMsg" placeholder="Description" required data-error-msg="Please say something here :)"></textarea> 
+                                        </div>
+                                        <button type="submit" class="btn btn-default" style="font-family: 'Roboto Condensed', sans-serif; font-size: 2.5vh;">Send Message</button>
+                                    </form>
+
+                                    <hr>
+                                    <h3>My Social Sites</h3>
+                                    <ul class="list-inline banner-social-buttons">
+                                        <li><a target="_blank" href="https://www.facebook.com/yuju.huang.90" class="btn btn-default btn-lg"><i class="fa fa-facebook"> <span class="network-name">Facebook</span></i></a></li>
+                                        <li><a target="_blank" href="https://www.youtube.com/channel/UCOinrAUnSMlo5Z6pD2tWGZw" class="btn btn-default btn-lg"><i class="fa fa-youtube-play"> <span class="network-name">YouTube</span></i></a></li>
+                                        <li><a target="_blank" href="https://www.linkedin.com/in/yu-ju-huang-454863126/" class="btn btn-default btn-lg"><i class="fa fa-linkedin"> <span class="network-name">LinkedIn</span></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <script>
+                    $(function() {
+                        $('form').validator({
+                            validHandlers: {
+                                '.customhandler':function(input) {
+                                    //may do some formatting before validating
+                                    input.val(input.val().toUpperCase());
+                                    //return true if valid
+                                    return input.val() === 'JQUERY' ? true : false;
+                                }
+                            }
+
+                        });
+
+
+                        $('form').submit(function(e) {
+                            e.preventDefault();
+                            if ($('form').validator('check') < 1) {
+                                alert('Hurray, your information will be saved!');
+                            }
+                        })
+                    })
+                </script>
+            </div>
+        </div>
+
+        <!-- JavaScript placed at the end of the document so the pages load faster -->
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/validate-bootstrap.jquery.min.js"></script>
+        
+        
+    </body>
+</html> 

@@ -75,6 +75,28 @@
 	            "pause": "1000"
 	        },
             {
+	            "name": "MRT",
+	            "lat": "1.352567012619413",
+	            "lng": "103.94553121179342",
+                "time": "1200",
+	            "src": [
+	                "audio/26 Feb 18 11.08pm Traffic Junction Mrt Side.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "trafficlight",
+	            "lat": "1.352567012619413",
+	            "lng": "103.94553121179342",
+                "time": "1200",
+	            "src": [
+	                "audio/31 Jan 18 12.48pm Mrt Road Junction.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
 	            "name": "trafficlight",
 	            "lat": "1.352567012619413",
 	            "lng": "103.94553121179342",
@@ -83,6 +105,17 @@
 	                "audio/29 Jan 18 4.30pm Before Crossing Road.mp3"
 	            ],
 	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.35231797185303",
+	            "lng": "103.94572500139475",
+                "time": "1200",
+	            "src": [
+	                "audio/26 Feb 18 11.09pm Traffic Junction HDB Side.mp3"
+	            ],
+	            "db": "70",
 	            "pause": "1000"
 	        },
 	        {
@@ -197,11 +230,66 @@
 	        },
             {
 	            "name": "traffic",
+	            "lat": "1.34874",
+	            "lng": "103.94733",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.24pm Shell Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
 	            "lat": "1.348755531634722",
 	            "lng": "103.94735176116228",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.24pm Shell Car Maintenance.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.3489086",
+	            "lng": "103.94775240000001",
                 "time": "1600",
 	            "src": [
 	                "audio/29 Jan 18 5.50pm Shell.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "Bus",
+	            "lat": "1.3488573",
+	            "lng": "103.94730679999998",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.30pm Pathway Towards Shell (2) Bus.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348668834572872",
+	            "lng": "103.94665103405714",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.30pm Pathway Towards Shell (2) Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "E-Scooter",
+	            "lat": "1.3486484",
+	            "lng": "103.94662189999997",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.33pm Pathway Towards Shell (2) E Scooter.mp3"
 	            ],
 	            "db": "80",
 	            "pause": "1000"
@@ -218,12 +306,78 @@
 	            "pause": "1000"
 	        },
             {
+	            "name": "E-Scooter",
+	            "lat": "1.3486484",
+	            "lng": "103.94662189999997",
+                "time": "2200",
+	            "src": [
+	                "audio/30 Jan 18 11.25pm Towards Shell (2).mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348437893304208",
+	            "lng": "103.94592683762312",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.35pm Pathway Towards Shell (1) Manhole.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.3484078",
+	            "lng": "103.94597950000002",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.38pm Pathway Towards Shell (1) Drilling.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.3484386",
+	            "lng": "103.94592050000006",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.34pm Pathway To Shell (1) Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
 	            "name": "traffic",
 	            "lat": "1.3484386",
 	            "lng": "103.94592050000006",
                 "time": "1600",
 	            "src": [
 	                "audio/29 Jan 18 5.43pm Towards Shell First Pathway Into HDB - Traffic, Bus, Bicycle, Cars.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348437893304208",
+	            "lng": "103.94592683762312",
+                "time": "2200",
+	            "src": [
+	                "audio/30 Jan 18 11.31pm Towards Shell (1).mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "footstep",
+	            "lat": "1.3485931",
+	            "lng": "103.94557580000003",
+                "time": "2200",
+	            "src": [
+	                "audio/30 Jan 18 11.33pm Century Square Route Near End.mp3"
 	            ],
 	            "db": "80",
 	            "pause": "1000"
@@ -361,6 +515,17 @@
 	            "pause": "1000"
 	        },
             {
+	            "name": "car wash",
+	            "lat": "1.349090159878845",
+	            "lng": "103.94721865653992",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.21pm Blk 166 Wash Car.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
 	            "name": "cars",
 	            "lat": "1.349090159878845",
 	            "lng": "103.94721865653992",
@@ -375,9 +540,42 @@
 	            "name": "bird",
 	            "lat": "1.349378752588079",
 	            "lng": "103.94721999764442",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.20pm Blk 163 Bird Chirping, Shell Wash Car, Construction.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "motorcycle",
+	            "lat": "1.3492313",
+	            "lng": "103.94747069999994",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.17pm Blk 163 Motorcycle.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "bird",
+	            "lat": "1.349378752588079",
+	            "lng": "103.94721999764442",
                 "time": "1600",
 	            "src": [
 	                "audio/29 Jan 18 6.00pm Blk 163 bird chirping.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "chatting",
+	            "lat": "1.3494377",
+	            "lng": "103.94630570000004",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.12pm Blk 164 People Chattering, Lift, Construction.mp3"
 	            ],
 	            "db": "80",
 	            "pause": "1000"
@@ -422,6 +620,39 @@
                 "time": "2000",
 	            "src": [
 	                "audio/29 Jan 18 6.09pm Blk 164 lift going up.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "footstep",
+	            "lat": "1.350425864523138",
+	            "lng": "103.94646931439638",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.54pm Garden.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "MRT",
+	            "lat": "1.350435864523138",
+	            "lng": "103.94656931439638",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.54pm Garden Mrt.mp3"
+	            ],
+	            "db": "100",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "bird",
+	            "lat": "1.350415864523138",
+	            "lng": "103.94626931439638",
+                "time": "1200",
+	            "src": [
+	                "audio/20 Mar 2018 1.55pm Garden Bird Chirping.mp3"
 	            ],
 	            "db": "80",
 	            "pause": "1000"
