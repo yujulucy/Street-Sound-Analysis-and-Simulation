@@ -2,6 +2,13 @@
 	    "id": "pano",
 	    
 	    "locations": [
+            {
+	            "name": "00mrt1_5",
+                "panoid": "CAoSLEFGMVFpcE1pdjFiUWhROGhhUG5pTmh0ZjBQYUhBZlRSQ1J0bmQ4a1VoaXlC",
+	            "lat": "1.353619150918289",
+	            "lng": "103.94506048411131",
+	            "time": "0000"
+	        },
 	        {
 	            "name": "12mrt1_5",
                 "panoid": "CAoSLEFGMVFpcE8tNU5hcjBYTEdPYnRxNFJtTXh2aEdBbjBsNHRwR284akVoR3ly",
@@ -15,6 +22,13 @@
 	            "lat": "1.353625854569561",
 	            "lng": "103.94506115466356",
 	            "time": "1600"
+	        },
+            {
+	            "name": "00mrt2_5",
+                "panoid": "CAoSLEFGMVFpcFBZV1J0ejhHV2w3M0lGdWxaVWlOS2xqSGstMnNYR2pETFdnVGh3",
+	            "lat": "1.353523623885461",
+	            "lng": "103.94516240805387",
+	            "time": "0000"
 	        },
             {
 	            "name": "12mrt2_5",
@@ -31,6 +45,13 @@
 	            "time": "1600"
 	        },
             {
+	            "name": "02mrt3_5",
+                "panoid": "CAoSLEFGMVFpcFBJVUtDck5jNTBmdXdLeWVSbTV5MUNXTDBjNVRET0hEYTZxX0Z3",
+	            "lat": "1.353321843965141",
+	            "lng": "103.94532803446054",
+	            "time": "0200"
+	        },
+            {
 	            "name": "12mrt3_5",
                 "panoid": "CAoSLEFGMVFpcE5wWDFzTlVTYVRPOWJGNVdDYnRRNjdNNVl6VTJicWthZkJ6Rzc0",
 	            "lat": "1.353322514330358",
@@ -43,6 +64,13 @@
 	            "lat": "1.353321173599936",
 	            "lng": "103.94532669335604",
 	            "time": "1600"
+	        },
+            {
+	            "name": "02mrt4_5",
+                "panoid": "CAoSLEFGMVFpcE5qZFJVX0thQTBadGNrSzQzRUhJY2U1M0hCQngzUmx0eXF1S0xE",
+	            "lat": "1.35308218839016",
+	            "lng": "103.94551277160645",
+	            "time": "0200"
 	        },
             {
 	            "name": "12mrt4_5",
@@ -59,6 +87,13 @@
 	            "time": "1600"
 	        },
             {
+	            "name": "02mrt5_5",
+                "panoid": "CAoSLEFGMVFpcE5zc0pHLW1JaWlQTkJPUGxFNGR4THhYS0dwbTJ3cGNMeGtGX3dv",
+	            "lat": "1.352760748218125",
+	            "lng": "103.9457555115223",
+	            "time": "0200"
+	        },
+            {
 	            "name": "12mrt5_5",
                 "panoid": "CAoSLEFGMVFpcE5iX2hMYlBuaVNSaVRscWoyTE5yS05mN3pkVUY0REFsR2htU3RU",
 	            "lat": "1.352754379747127",
@@ -71,6 +106,13 @@
 	            "lat": "1.352753374199078",
 	            "lng": "103.94574847072363",
 	            "time": "1600"
+	        },
+            {
+	            "name": "02cross_road_at_mall",
+                "panoid": "CAoSLEFGMVFpcFAtbFFqdUVyY2F3YndfeGp0QVc5X0RzZFZnSW5YQTFRVVV4dUR2",
+	            "lat": "1.352562655244169",
+	            "lng": "103.94554898142815",
+	            "time": "0200"
 	        },
             {
 	            "name": "12cross_road_at_mall",
@@ -87,11 +129,25 @@
 	            "time": "1600"
 	        },
             {
+	            "name": "02cross_road_at_hdb",
+                "panoid": "CAoSLEFGMVFpcE96TlZ6aHpEbUVKYjlPQ1V3SC1tNXBua2ZDNDVqeWx6enJTV2VD",
+	            "lat": "1.352321658863209",
+	            "lng": "103.94572500139475",
+	            "time": "0200"
+	        },
+            {
 	            "name": "12cross_road_at_hdb",
                 "panoid": "CAoSLEFGMVFpcFBiOEt4LWgyakZKdUtweGgwelNNMC1SUDZTTjNoVEFYcGtzMmJC",
 	            "lat": "1.35231797185303",
 	            "lng": "103.94572500139475",
 	            "time": "1200"
+	        },
+            {
+	            "name": "02path_under_mrt_2_7",
+                "panoid": "CAoSLEFGMVFpcFBrb0lrczB4SFdFaEI5bVVnR2lObEJVZktmZzR1ZGdIY0VwWkha",
+	            "lat": "1.351895306375407",
+	            "lng": "103.94617360085249",
+	            "time": "0200"
 	        },
             {
 	            "name": "14path_under_mrt_2_7",
@@ -101,11 +157,25 @@
 	            "time": "1400"
 	        },
             {
+	            "name": "02path_under_mrt_3_7",
+                "panoid": "CAoSLEFGMVFpcE1TaTUxRWdBczBxQ2FoRm0tajlMc1ZYR0lwbGtsV2RudklvbXQx",
+	            "lat": "1.351543699589744",
+	            "lng": "103.94648104906082",
+	            "time": "0200"
+	        },
+            {
 	            "name": "14path_under_mrt_3_7",
                 "panoid": "CAoSLEFGMVFpcFBBZnFVcVFNemxWTlZ6MG9vQTk4eGtGMXFVdU1saG5oQlRLRWRa",
 	            "lat": "1.351540012578382",
 	            "lng": "103.94647803157568",
 	            "time": "1400"
+	        },
+            {
+	            "name": "02path_under_mrt_4_7",
+                "panoid": "CAoSLEFGMVFpcE01U003TVhJRjBBZ0pQMVdEUXAxZEs1MUZXMjRlSE1Tb3JHNUVS",
+	            "lat": "1.351241364638967",
+	            "lng": "103.9467204362154",
+	            "time": "0200"
 	        },
             {
 	            "name": "14path_under_mrt_4_7",
@@ -115,11 +185,25 @@
 	            "time": "1400"
 	        },
             {
+	            "name": "02path_under_mrt_5_7",
+                "panoid": "CAoSLEFGMVFpcE01SlhBdW1RU25lX0tZUk0waGZ2dnE0WlI5TkVaWjEzd3pHcTEy",
+	            "lat": "1.350785851044519",
+	            "lng": "103.94703157246113",
+	            "time": "0200"
+	        },
+            {
 	            "name": "14path_under_mrt_5_7",
                 "panoid": "CAoSLEFGMVFpcFBUa0Z3clJEOVZhTEJFUDRPR19EMXhCRmFESDY2ek9LaVVrbHVC",
 	            "lat": "1.35078853250815",
 	            "lng": "103.94703291356564",
 	            "time": "1400"
+	        },
+            {
+	            "name": "02path_under_mrt_6_7",
+                "panoid": "CAoSLEFGMVFpcE44NXFkekRReXFfam8zbzNoV25DM3I4a3I1RHZkVEJ6bk1fRHEz",
+	            "lat": "1.349621760359669",
+	            "lng": "103.94804310053587",
+	            "time": "0200"
 	        },
             {
 	            "name": "14path_under_mrt_6_7",
@@ -129,6 +213,13 @@
 	            "time": "1400"
 	        },
             {
+	            "name": "02path_under_mrt_7_7",
+                "panoid": "CAoSLEFGMVFpcE0tMzZFUTEzcWUyaHhEM2RRVmM2TFItX1Z6Nko5bTdCanBwcHlJ",
+	            "lat": "1.349310710407688",
+	            "lng": "103.94827913492918",
+	            "time": "0200"
+	        },
+            {
 	            "name": "14path_under_mrt_7_7",
                 "panoid": "CAoSLEFGMVFpcE9SOGlhQnhsM1R1MWd5a25LeXoyTy0tb3VISnFMRHMydlp4cS1j",
 	            "lat": "1.349306353026617",
@@ -136,18 +227,32 @@
 	            "time": "1400"
 	        },
             {
-	            "name": "12Shell",
+	            "name": "02shell",
+                "panoid": "CAoSLEFGMVFpcE9lSmtOOEdOUGZQN0Zla0RpeVloVTBTc2hHazA3SFItVmlncG13",
+	            "lat": "1.34877508766009",
+	            "lng": "103.94737120717764",
+	            "time": "0200"
+	        },
+            {
+	            "name": "12shell",
                 "panoid": "CAoSLEFGMVFpcFA1c28wckYxcHVsbzc2MTFzNzBRR2EzTFVsVl85VnFudVZBOGRE",
 	            "lat": "1.3489086",
 	            "lng": "103.94775240000001",
 	            "time": "1200"
 	        },
             {
-	            "name": "16Shell",
+	            "name": "16shell",
                 "panoid": "CAoSLEFGMVFpcE5ESHd1aHRmc2poQXJSZHY0c2xQaFo3alYtZ3Vfb3FaaW5MZElB",
 	            "lat": "1.348855531634722",
 	            "lng": "103.94735176116228",
 	            "time": "1600"
+	        },
+            {
+	            "name": "02path_towards_shell_second_pathway",
+                "panoid": "CAoSLEFGMVFpcFBoTWY4aDVlbFRnbGNCZ1VzUU1oZ3VfaE1kcnlYTlNJMF9RTnZt",
+	            "lat": "1.348601462739137",
+	            "lng": "103.94665572792292",
+	            "time": "0200"
 	        },
             {
 	            "name": "12path_towards_shell_second_pathway",
@@ -206,6 +311,13 @@
 	            "time": "2200"
 	        },
             {
+	            "name": "02path_towards_shell_first_pathway",
+                "panoid": "CAoSLEFGMVFpcE9rSTlJYjI0U0NlRGt5RU5PdGcyTlhSY1IzeTlpSWVKTmVJZmlm",
+	            "lat": "1.348362477065128",
+	            "lng": "103.94596539437771",
+	            "time": "0200"
+	        },
+            {
 	            "name": "12path_towards_shell_first_pathway",
                 "panoid": "CAoSLEFGMVFpcE5aZnhRVHdnd1pTT2NMVmdqWkRTdnBMc19LaDlUY1V6UlpTZlJK",
 	            "lat": "1.348419123040471",
@@ -262,6 +374,13 @@
 	            "time": "2200"
 	        },
             {
+	            "name": "02end_of_century_square_route",
+                "panoid": "CAoSLEFGMVFpcE81Ti1pTkc0ZG9RWElLZl9mbHNhcm5IU1BpVnJaOS1zRDk1Ulhr",
+	            "lat": "1.348277340507995",
+	            "lng": "103.94555803388357",
+	            "time": "0200"
+	        },
+            {
 	            "name": "12end_of_century_square_route",
                 "panoid": "CAoSLEFGMVFpcE9qbGdIYTB1VjVzTlRITks3UkZ5ZkVxMXkxQ2FuRlpJdlhHUVAw",
 	            "lat": "1.3481144",
@@ -274,6 +393,13 @@
 	            "lat": "1.348306166271764",
 	            "lng": "103.94552484154701",
 	            "time": "1600"
+	        },
+            {
+	            "name": "02busstop_blk141",
+                "panoid": "CAoSLEFGMVFpcE5VSXJUbEpmbjl2aFo4OE9CTERnTUVuTC1PZ014M1JEX0lYZXQ1",
+	            "lat": "1.348084610101886",
+	            "lng": "103.94516978412867",
+	            "time": "0200"
 	        },
             {
 	            "name": "16busstop_blk141",
@@ -346,6 +472,13 @@
 	            "time": "1600"
 	        },
             {
+	            "name": "02beside_end_of_tamp_pri_sch",
+                "panoid": "CAoSLEFGMVFpcE5vcXhCRDA1dE9GYWJhMUZUWEUybm43ZTk2Y0h2YnBTQjlLeEpQ",
+	            "lat": "1.349077422917599",
+	            "lng": "103.94543465226889",
+	            "time": "0200"
+	        },
+            {
 	            "name": "20beside_end_of_tamp_pri_sch_1",
                 "panoid": "CAoSLEFGMVFpcFAwLU1WLTE2bEl6UVNUaV9BYUNMbmRPc1dtd3JxNUw0bVNoVDVX",
 	            "lat": "1.34907",
@@ -379,6 +512,13 @@
 	            "lat": "1.349067032238642",
 	            "lng": "103.94543699920177",
 	            "time": "2200"
+	        },
+            {
+	            "name": "02near_end_of_century_square_route",
+                "panoid": "CAoSLEFGMVFpcE1NYm5PRmFjdHNUQTNyOUNqbjg5czktQzZDOEdXbGNWYWc1QjRL",
+	            "lat": "1.348593753524218",
+	            "lng": "103.94559860229492",
+	            "time": "0200"
 	        },
             {
 	            "name": "12near_end_of_century_square_route",
@@ -500,6 +640,13 @@
 	            "time": "1800"
 	        },
             {
+	            "name": "02blk163",
+                "panoid": "CAoSLEFGMVFpcFBlOWxyVVVUSmFJZlZNRkdROXNWa0JZX1NsQTVNNkJZdlc2NWtl",
+	            "lat": "1.349377411855481",
+	            "lng": "103.94721262156963",
+	            "time": "0200"
+	        },
+            {
 	            "name": "12blk163",
                 "panoid": "CAoSLEFGMVFpcE9sUUU4a0dFMmpWdURVc1d6ME41UUhPQ3dUQ1gxTFBGdEZQeGt5",
 	            "lat": "1.3492313",
@@ -514,6 +661,13 @@
 	            "time": "1600"
 	        },
             {
+	            "name": "02blk166",
+                "panoid": "CAoSLEFGMVFpcE5zU1ZsbzVLckRmMnVaMWVOUk5sZWhYOUhFSVpuZElqMmdfdGs4",
+	            "lat": "1.349081780299077",
+	            "lng": "103.94721362739801",
+	            "time": "0200"
+	        },
+            {
 	            "name": "12blk166",
                 "panoid": "CAoSLEFGMVFpcFA0T2ZRWGdGRlVRQlp6dzJHOXJNcjdGS3FzR2NQTUl2bEdJaS1I",
 	            "lat": "1.3490907",
@@ -526,6 +680,13 @@
 	            "lat": "1.349090159878845",
 	            "lng": "103.94721865653992",
 	            "time": "1600"
+	        },
+            {
+	            "name": "00garden",
+                "panoid": "CAoSLEFGMVFpcFBPSVFYTVdLWXVCQ1RoX3hPU0pHREphdmRnN1dTbTZYdVNrcVYt",
+	            "lat": "1.350435880379013",
+	            "lng": "103.9467699790689",
+	            "time": "0000"
 	        },
             {
 	            "name": "12garden",
