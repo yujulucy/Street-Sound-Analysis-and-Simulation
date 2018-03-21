@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Street View side-by-side</title>
+        <title>Street View of Singapore</title>
         
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -111,13 +111,16 @@
 
                 <ul class="list-unstyled components">
                     <p>CG4001 BEng Dissertation</p>
-                    <li>
+                    <!--li>
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li><a href="#">Home 1</a></li>
                             <li><a href="#">Home 2</a></li>
                             <li><a href="#">Home 3</a></li>
                         </ul>
+                    </li-->
+                    <li>
+                        <a href="home.html">Home</a>
                     </li>
                     <li class="active">
                         <a href="start.html">Street View</a>
@@ -144,21 +147,21 @@
                         <a href="analysis.html">Data</a>
                     </li>
                     <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Existing Projects</a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Similar Projects</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                             <li><a href="http://www.amplifon.ie/sounds-of-street-view/">Sounds of Street View</a></li>
                             <li><a href="http://soundcityproject.com/#/">Sound City Project</a></li>
                             <li><a href="https://pregonerosdemedellin.com/">Pregoneros de Medellín</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <!--li>
                         <a href="#">Contact</a>
-                    </li>
+                    </li-->
                 </ul>
 
                 <ul class="list-unstyled CTAs">
                     <li><a href="https://github.com/yujulucy/Street-Sound-Analysis-and-Simulation" class="download">Download source</a></li>
-                    <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
+                    <!--li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li-->
                 </ul>
             </nav>
 
@@ -263,7 +266,7 @@
                             newLng = newPos.lng();
 
                             if (window.location.href.indexOf("?dev=true") > -1) {
-                                alert("detected dev");
+                                //alert("detected dev");
                                 //timeVar = checkCurrentTime(newLat, newLng);
                                 addMarker();
                             }
@@ -365,10 +368,10 @@
                         function defaultCall(diffLat, diffLng, jsTime, actualTime) {
                             //if ((newLat.toString() == f.lat) && (newLng.toString() == f.lng)) {
                                 if ((diffLat < 0.0005) && (diffLng < 0.0005) && (jsTime == actualTime)) { //&& (f.time == "0000")) {
-                                    alert("i'm in if loop");
-                                    alert(f.time);
-                                    alert("f.lat: " + f.lat + " & f.lng: " + f.lng);
-                                    alert("lat: " + newLat + " & lng: " + newLng);
+                                    //alert("i'm in if loop");
+                                    //alert(f.time);
+                                    //alert("f.lat: " + f.lat + " & f.lng: " + f.lng);
+                                    //alert("lat: " + newLat + " & lng: " + newLng);
 
                                     files.push(f.src.toString());
 
@@ -467,7 +470,7 @@
                                         //alert("vol in check file: " + volArr[i]);
                                         id = sound[i].play();
                                         sound[i].volume(volArr[i], id);
-                                        alert("id in loop" + id);
+                                        //alert("id in loop" + id);
                                         //alert("vol: " + volArr[i]);
                                         //alert("panPos in check file = " + panPos.toString());
                                         //sound[i].pos3d(panPosArr[i], 1, 1, id);
@@ -620,11 +623,11 @@
 
                             for (i = 0; i < timearr.length; i++) {
                                 if (result == timearr[i].toString()) {
-                                    alert("result in true: " + result);
+                                    //alert("result in true: " + result);
                                     $(result).css('background-color', '#D2691E');
                                 }
                                 else {
-                                    alert("result in false: " + result);
+                                    //alert("result in false: " + result);
                                     $(timearr[i].toString()).css('background-color', '');
                                 }
                             }
@@ -656,8 +659,8 @@
                         function addMarker() {
                             //alert("why " + lat.toString() + " " + lng.toString());
                             currTime = checkCurrentTime(lat, lng);
-                            alert("whyyyyyyyyy");
-                            alert("current time in addMarker: " + currTime);
+                            //alert("whyyyyyyyyy");
+                            //alert("current time in addMarker: " + currTime);
 
                             $.getJSON('data/audio.json', function(data) {
                                 $.each(data.sounds, function(i, f) {
@@ -676,7 +679,7 @@
                             });
                         }
 
-                        alert("test");
+                        //alert("test");
 
                     </script>
                 </div>
