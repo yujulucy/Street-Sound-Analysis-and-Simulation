@@ -1,0 +1,95 @@
+.wrapper {
+    /*font-family: arial, sans-serif;*/
+    margin: 0;
+    /*background: url("../img/pilatus.jpg");*/
+    background: url("../img/pilatus.jpg");
+    background-size: cover;
+    background-position: center;
+    //width: 100%;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    position: relative;
+    //opacity: 0.8;
+    //filter: alpha(opacity(80));
+}
+
+h1.title {
+    font-family: 'Playfair Display', sans-serif;
+    text-align: center;
+    font-weight: 200;
+    font-size: 12vh;
+    color: #17202A;
+    margin-top: 12%;
+}
+
+.enterBtn {
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Playfair Display', sans-serif;
+    text-align: center;
+    font-size: 4vh;
+    /*color: #FAEBD7;*/
+    color: #7386D5;
+    background-color: #17202A;
+    margin-top: 5vh;
+    margin-left: 47%;
+}
+
+.enterBtn:hover {
+    color: #17202A;
+    /*background-color: #FAEBD7;*/
+    background-color: #7386D5;
+}
+
+/*@media screen and (max-width: 600px){
+    .topnav li.right, 
+    
+    .topnav li {
+        float: none;
+    }
+    
+    .smicons {
+        font-size: 1em;
+        margin-top: 30%;
+    }
+}*/
+
+
+
+
+
+//desktop
+@media only screen and (min-width: 768px) {
+    body { min-width:960px; }
+
+    .topnav li.right, 
+    
+    .topnav li {
+        float: none;
+    }
+    
+}
+
+//tablets
+@media only screen and (min-width: 600px) {
+    body { min-width:768px; }
+
+    .topnav li.right, 
+    
+    .topnav li {
+        float: none;
+    }
+    
+}
+
+//mobile
+@media only screen and (min-width: 480px) {
+    body { min-width:480px; }
+
+    .topnav li.right, 
+    
+    .topnav li {
+        float: none;
+    }
+
+}
