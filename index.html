@@ -351,6 +351,7 @@
                     else {
                         alert("nothing in audio");
                     }*/
+                    
                     stopAudio();
                     
                     //checkPano(newLat, newLng);
@@ -474,32 +475,6 @@
                 return supposedTime;
             }
             
-            function sleep (time) {
-                return new Promise((resolve) => setTimeout(resolve, time));
-            }
-            
-            function defaultCall(diffLat, diffLng, jsTime, actualTime) {
-                //if ((newLat.toString() == f.lat) && (newLng.toString() == f.lng)) {
-                    if ((diffLat < 0.0005) && (diffLng < 0.0005) && (jsTime == actualTime)) { //&& (f.time == "0000")) {
-                        alert("i'm in if loop");
-                        alert(f.time);
-                        alert("f.lat: " + f.lat + " & f.lng: " + f.lng);
-                        alert("lat: " + newLat + " & lng: " + newLng);
-
-                        files.push(f.src.toString());
-
-                        /*sound = new Howl({  //--most recent
-                            src: [f.src.toString()]
-                        });
-
-                        id = sound.play();
-                        audio.push(id.toString());*/
-
-                        //sound.fade(prevVolume, vol, 500);
-                    }
-                //}
-            }
-            
             function checkAudio(newLat, newLng, heading) {//, callback) {
                 var d = $.Deferred();
                 
@@ -619,6 +594,8 @@
                                     volArr.push(vol.toString());
                                     panPosArr.push(panPos.toString());
                                     pauseArr.push(loop.toString());
+                                    
+                                    //alert(files.toString());
 
                                     /*sound = new Howl({  //--most recent
                                         src: [f.src.toString()]
@@ -774,7 +751,7 @@
                                 distanceModel: 'exponential'
                             }, soundId);*/
                             
-                            audio.push(id.toString());
+                            audio.push(soundId.toString());
                         }
 
                         files = [];
@@ -1085,8 +1062,8 @@
             
             function addMarker() {
                 //alert("why " + lat.toString() + " " + lng.toString());
-                currTime = checkCurrentTime(lat, lng);
-                alert("whyyyyyyyyy");
+                //currTime = checkCurrentTime(lat, lng);
+                //alert("whyyyyyyyyy");
                 alert("current time in addMarker: " + currTime);
                 
                 $.getJSON('data/audio.json', function(data) {
@@ -1096,11 +1073,37 @@
                             var marker = new google.maps.Marker({
                                 map 		: panorama,
                                 title 		: f.name,
-                                position 	: new google.maps.LatLng(f.lat, f.lng)
-                                //draggable 	: mydata.draggable,
-                                //icon 		: mydata.icon
+                                position 	: new google.maps.LatLng(f.lat, f.lng),
+                                draggable 	: true,
+                                clickable   : true
                             });
                             markers.push(marker);
+                            
+                            var contentString = '<div id="content">' + '<h3 id="lat" class="lat">Latitude</h3>' + '<p>' + f.lat.toString() + '</p>'  + '<h3 id="lng" class="lng">Longitude</h3>' + '<p>' + f.lng.toString() + '</p>' + '</div>';
+                            
+                            var infowindow = new google.maps.InfoWindow({
+                                content: contentString
+                            });
+                            
+                            marker.addListener('dragend', function() {
+                                var currPos = marker.getPosition();
+                                var currLat = currPos.lat();
+                                var currLng = currPos.lng();
+                                
+                                contentString = '<div id="content">' + '<h3 id="lat" class="lat">Latitude</h3>' + '<p>' + currLat.toString() + '</p>'  + '<h3 id="lng" class="lng">Longitude</h3>' + '<p>' + currLng.toString() + '</p>' + '</div>';
+                                
+                                infowindow.close();
+                                
+                                infowindow = new google.maps.InfoWindow({
+                                    content: contentString
+                                });
+                                
+                                google.maps.event.trigger(marker, "click");
+                            });
+                            
+                            marker.addListener('click', function() {
+                                infowindow.open(map, marker);
+                            });
                         }
                     });
                 });
