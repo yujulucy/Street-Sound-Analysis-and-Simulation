@@ -266,7 +266,7 @@
                             newLng = newPos.lng();
 
                             if (window.location.href.indexOf("?dev=true") > -1) {
-                                //alert("detected dev");
+                                alert("detected dev");
                                 //timeVar = checkCurrentTime(newLat, newLng);
                                 addMarker();
                             }
@@ -368,10 +368,10 @@
                         function defaultCall(diffLat, diffLng, jsTime, actualTime) {
                             //if ((newLat.toString() == f.lat) && (newLng.toString() == f.lng)) {
                                 if ((diffLat < 0.0005) && (diffLng < 0.0005) && (jsTime == actualTime)) { //&& (f.time == "0000")) {
-                                    //alert("i'm in if loop");
-                                    //alert(f.time);
-                                    //alert("f.lat: " + f.lat + " & f.lng: " + f.lng);
-                                    //alert("lat: " + newLat + " & lng: " + newLng);
+                                    alert("i'm in if loop");
+                                    alert(f.time);
+                                    alert("f.lat: " + f.lat + " & f.lng: " + f.lng);
+                                    alert("lat: " + newLat + " & lng: " + newLng);
 
                                     files.push(f.src.toString());
 
@@ -470,7 +470,7 @@
                                         //alert("vol in check file: " + volArr[i]);
                                         id = sound[i].play();
                                         sound[i].volume(volArr[i], id);
-                                        //alert("id in loop" + id);
+                                        alert("id in loop" + id);
                                         //alert("vol: " + volArr[i]);
                                         //alert("panPos in check file = " + panPos.toString());
                                         //sound[i].pos3d(panPosArr[i], 1, 1, id);
@@ -623,11 +623,11 @@
 
                             for (i = 0; i < timearr.length; i++) {
                                 if (result == timearr[i].toString()) {
-                                    //alert("result in true: " + result);
+                                    alert("result in true: " + result);
                                     $(result).css('background-color', '#D2691E');
                                 }
                                 else {
-                                    //alert("result in false: " + result);
+                                    alert("result in false: " + result);
                                     $(timearr[i].toString()).css('background-color', '');
                                 }
                             }
@@ -651,6 +651,8 @@
                                         map.setCenter(new google.maps.LatLng(currentLat, currentLng));
                                         setLocation(map, panoId, panorama);
                                         count = count + 1;
+                                        
+                                        alert("lat: " + currentLat.toString() + " lng: " + currentLng.toString());
                                     }
                                 });
                             });
@@ -659,8 +661,8 @@
                         function addMarker() {
                             //alert("why " + lat.toString() + " " + lng.toString());
                             currTime = checkCurrentTime(lat, lng);
-                            //alert("whyyyyyyyyy");
-                            //alert("current time in addMarker: " + currTime);
+                            alert("whyyyyyyyyy");
+                            alert("current time in addMarker: " + currTime);
 
                             $.getJSON('data/audio.json', function(data) {
                                 $.each(data.sounds, function(i, f) {
@@ -679,7 +681,7 @@
                             });
                         }
 
-                        //alert("test");
+                        alert("test");
 
                     </script>
                 </div>

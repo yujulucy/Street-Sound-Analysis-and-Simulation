@@ -10,6 +10,7 @@
         <script src="js/sosv.min.js"></script>
         <!--script src="js/sosv.js"></script-->
         <script src="howler.js-master/src/howler.core.js"></script>
+        <script src="howler.js-master/src/plugins/howler.spatial.js"></script>
         <script src="data/audio.json"></script>
         
         <!--base href="https://www.w3schools.com/images/"-->
@@ -161,7 +162,7 @@
             //var panorama;
             var panoId;
             //var defaultPos = {lat: 1.34946590020551, lng: 103.94630536437035}
-            var defaultPos = {lat: 1.353628536030063, lng: 103.9450628310442}
+            var defaultPos = {lat: 1.353611776901849, lng: 103.94506886601448}
             var prevVolume = 0;
             var vol = 0;
             var prevPos;
@@ -173,8 +174,9 @@
             panPosArr = [];
             indexArr = [];
             sound = [];
+            pauseArr = [];
             
-            var currTime = "0000";
+            currTime = "0000";
             
             /*$(function(){
                 // Create your Sound of Street View - make sure the path points to your JSON file
@@ -182,6 +184,7 @@
             });*/
             
             function initialize() {
+                var index = 0;
                 //new SOSV('data/audio.json');
                 //var fenway = {lat: 42.345573, lng: -71.098326};
                 //var tampines = {lat: 1.3532035, lng: 103.944902}
@@ -227,6 +230,10 @@
                     }
                 });
                 
+                if (index == 0) {
+                    //checkAudio(defaultPos.lat, defaultPos.lng, panorama.getPov().heading).pipe(checkFilesArray);
+                }
+
                 //alert(panorama.getPosition().toString());
                 /*var musicMarker2 = new google.maps.Marker({
                     position: tamp02,
@@ -346,6 +353,8 @@
                     }*/
                     stopAudio();
                     
+                    //checkPano(newLat, newLng);
+                    
                     checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
                     
                     /*checkAudio(newLat, newLng, function() {
@@ -373,6 +382,8 @@
                     
                     //prevPos.lat() = newLat;
                     //prevPos.lng() = newLng;
+                    
+                    index += 1;
                 });
                 
                 google.maps.event.addListener(panorama, 'pov_changed', function() {
@@ -421,7 +432,7 @@
                         if (flag) {
                             if ((lat.toString() == f.lat) && (lng.toString() == f.lng)) {
                                 if(f.name.endsWith("163")) {
-                                    alert("lat is true, lng is true. lat: " + lat.toString() + " lng: " + lng.toString());
+                                    //alert("lat is true, lng is true. lat: " + lat.toString() + " lng: " + lng.toString());
                                 }
                                 
                                 hexSign = "#t";
@@ -450,7 +461,7 @@
                             }
                             else {
                                 if(f.name.endsWith("163")) {
-                                    alert("lat is false, lng is false. lat: " + lat.toString() + " lng: " + lng.toString());
+                                    //alert("lat is false, lng is false. lat: " + lat.toString() + " lng: " + lng.toString());
                                 }
                                 for (i = 0; i < timearr.length; i++) {
                                     $(timearr[i].toString()).css('background-color', '');
@@ -498,7 +509,8 @@
                     var index = 0;
                     const howlerList = {};
                     //alert(newLat.toString());
-                    //alert("got here");
+                    alert("got here");
+                    alert("newLat in check audio: " + newLat.toString() + " newLng: " + newLng.toString());
                     supposedTime = checkCurrentTime(newLat, newLng);
 
                     /*if (sound != null) {
@@ -563,15 +575,16 @@
                             if ((window.location.href.substr(window.location.href.lastIndexOf('#') + 1)) == f.time) {
                                 if (index == 0) {
                                     //alert("first if");
+                                    //alert("newLat in check audio: " + newLat.toString() + " newLng: " + newLng.toString());
                                 }
-
+                                
                                 //diffLat = Math.abs(newLat - f.lat);
                                 //diffLng = Math.abs(newLng - f.lng);
 
                                 //alert(diffLat.toString());
-                                panPos = updatePan(diffLat, diffLng, heading);
+                                //panPos = updatePan(diffLat, diffLng, heading);
                                 //alert("panPos in check audio = " + panPos.toString());
-                                vol = updateVolume(f.lat, f.lng, newLat, newLng, f.db);
+                                //vol = updateVolume(f.lat, f.lng, newLat, newLng, f.db);
                                 //alert("volume in loop: " +　vol.toString());
 
                                 //alert(diffLat.toString());
@@ -580,6 +593,9 @@
                                 var loop = (!parseFloat(f.pause)) ? true : false;
 
                                 if ((diffLat < 0.0005) && (diffLng < 0.0004)) {// && (f.time == currTime)) {
+                                    panPos = updatePan(diffLat, diffLng, heading);
+                                    vol = updateVolume(f.lat, f.lng, newLat, newLng, f.db);
+                                    
                                     //alert(f.name);
                                     //alert(diffLat.toString() + " and " + diffLng.toString());
                                     //alert("check time: " + currTime.toString());
@@ -602,6 +618,7 @@
                                     files.push(f.src.toString());
                                     volArr.push(vol.toString());
                                     panPosArr.push(panPos.toString());
+                                    pauseArr.push(loop.toString());
 
                                     /*sound = new Howl({  //--most recent
                                         src: [f.src.toString()]
@@ -631,8 +648,11 @@
                                 //checkCurrentTime(newLat, newLng);
                                 //alert("supposedTime: " + supposedTime);
                                 
+                                var loop = (!parseFloat(f.pause)) ? true : false;
+                                
                                 if (index == 0) {
                                     //alert("else if");
+                                    //alert("newLat in check audio: " + newLat.toString() + " newLng: " + newLng.toString());
                                 }
                                 
                                 //alert(supposedTime);
@@ -671,6 +691,7 @@
                                     files.push(f.src.toString());
                                     volArr.push(vol.toString());
                                     panPosArr.push(panPos.toString());
+                                    pauseArr.push(loop.toString());
                                 }
                                 
                                 /*//if ((newLat.toString() == f.lat) && (newLng.toString() == f.lng)) {
@@ -733,23 +754,33 @@
                         for (i = 0; i < files.length; i++) {
                             sound[i] = new Howl({
                                 src: files[i],
-                                loop: true,
+                                loop: pauseArr[i],
                                 html5: true
                             });
                             
                             //alert("filename in check file: " + files[i]);
                             //alert("vol in check file: " + volArr[i]);
-                            id = sound[i].play();
-                            sound[i].volume(volArr[i], id);
-                            alert("id in loop" + id);
+                            soundId = sound[i].play();
+                            //alert("panPos in check file = " + panPosArr[i].toString());
+                            //sound[i].pos(panPosArr[i], 1, 1, soundId);
+                            sound[i].volume(volArr[i], soundId);
+                            //alert("id in loop" + id);
                             //alert("vol: " + volArr[i]);
-                            //alert("panPos in check file = " + panPos.toString());
-                            //sound[i].pos3d(panPosArr[i], 1, 1, id);
+                            
+                            /*sound[i].pannerAttr({
+                                panningModel: 'HRTF',
+                                refDistance: 0.8,
+                                rolloffFactor: 2.5,
+                                distanceModel: 'exponential'
+                            }, soundId);*/
+                            
                             audio.push(id.toString());
                         }
 
                         files = [];
                         volArr = [];
+                        panPosArr = [];
+                        pauseArr = [];
                     }
                     else {
                         //alert("nothing in files");
@@ -905,6 +936,55 @@
                         }
                     }
                 }
+            }
+            
+            function checkPano(currentLat, currentLng) { 
+                //currentPos = panorama.getPosition();
+                //currentLat = currentPos.lat();
+                //currentLng = currentPos.lng();
+                
+                currTime = checkCurrentTime(currentLat, currentLng);
+                
+                displayTime = window.location.href.split('#')[1];
+                
+                $.getJSON('data/location.json', function(data) {
+                    $.each(data.locations, function(i, f) {
+                        latDiff = Math.abs(currentLat - f.lat);
+                        lngDiff = Math.abs(currentLng - f.lng);
+
+                        if ((window.location.href.substr(window.location.href.lastIndexOf('#') + 1)) == f.time) {
+                            if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                if (displayTime == f.time) {
+                                    alert("display time same");
+                                    panoId = f.panoid;
+
+                                    map.setCenter(new google.maps.LatLng(currentLat, currentLng));
+                                    setLocation(map, panoId, panorama);
+                                    //count = count + 1;
+                                }
+                                else {
+                                    alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+                                    
+                                    newTime = "#" + f.time;
+                                    window.location.href = window.location.href.split('#')[0].concat(newTime);
+                                    
+                                    panoId = f.panoid;
+
+                                    map.setCenter(new google.maps.LatLng(currentLat, currentLng));
+                                    setLocation(map, panoId, panorama);
+                                }
+                            }
+                        }
+                        else if (!window.location.href.endsWith("00")) {
+                            if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7))) && (f.time == "0000")) {
+                                panoId = f.panoid;
+
+                                map.setCenter(new google.maps.LatLng(currentLat, currentLng));
+                                setLocation(map, panoId, panorama);
+                            }
+                        }
+                    });
+                }); 
             }
             
             function checkBtn(event) {

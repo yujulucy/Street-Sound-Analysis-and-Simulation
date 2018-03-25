@@ -12,6 +12,102 @@
         <!-- Our Custom CSS -->
         <link rel="stylesheet" type="text/css" href="css/style5.css">
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        
+        <style>
+            h4 {
+                padding-top: 15px;
+            }
+            
+            #route1 td, th {
+                width: 4rem;
+                height: 2rem;
+                border: 1px solid #ccc;
+                text-align: center;
+                empty-cells: hide;
+            }
+            
+            #route1 th {
+                color: white;
+                background: #7386D5;
+                border-color: white;
+                padding: 10px;
+                width: auto;
+            }
+            
+            /*#route1 th:empty, #route1 td:empty { 
+                background: gray; 
+            }*/
+            
+            #route2 body {
+                padding: 1rem;
+            }
+            
+            #route2 td, th {
+                width: 4rem;
+                height: 2rem;
+                border: 1px solid #ccc;
+                text-align: center;
+            }
+            
+            #route2 th {
+                color: white;
+                background: #7386D5;
+                border-color: white;
+                padding: 10px;
+                width: auto;
+            }
+            
+            #route2 body {
+                padding: 1rem;
+            }
+            
+            #route3 td, th {
+                width: 4rem;
+                height: 2rem;
+                border: 1px solid #ccc;
+                text-align: center;
+            }
+            
+            #route3 th {
+                color: white;
+                background: #7386D5;
+                border-color: white;
+                padding: 10px;
+                width: auto;
+            }
+            
+            #route3 body {
+                padding: 1rem;
+            }
+            
+            #panoid th {
+                background: #7386D5;
+                color: white;
+            }
+            
+            #panoid td, th {
+                border: 1px solid #999;
+                padding: 10px;
+            }
+            
+            #panoid tbody {
+                padding: 1rem;
+            }
+            
+            #record th {
+                background: #7386D5;
+                color: white;
+            }
+            
+            #record td, th {
+                border: 1px solid #999;
+                padding: 10px;
+            }
+            
+            #record tbody {
+                padding: 1rem;
+            }
+        </style>
 
         <script>
             $(function() {
@@ -19,7 +115,7 @@
                 $.getJSON('data/location.json', function(data) {
                     $.each(data.locations, function(i, f) {
                         var tblRow = "<tr>" + "<td>" + count + "</td>" + "<td>" + f.name + "</td>" +
-                        "<td>" + f.panoid + "</td>" + "<td>" + f.lat + "</td>" + "<td>" + f.lng + "</td>" + "</tr>"
+                        "<td>" + f.panoid + "</td>" + "<td>" + parseFloat(f.lat).toFixed(5) + "</td>" + "<td>" + parseFloat(f.lng).toFixed(7) + "</td>" + "</tr>"
                         $(tblRow).appendTo("#panoid tbody");
                         count += 1;
                     });
@@ -30,7 +126,7 @@
                 var count = 1;
                 $.getJSON('data/audio.json', function(data) {
                     $.each(data.sounds, function(i, f) {
-                        var tblRow = "<tr>" +  "<td>" + count + "</td>" + "<td>" + f.name + "</td>" + "<td>" + f.lat + "</td>" + "<td>" + f.lng + "</td>" + "<td>" + f.time + "</td>" +  "<td>" + f.src + "</td>" + "</tr>"
+                        var tblRow = "<tr>" +  "<td>" + count + "</td>" + "<td>" + f.name + "</td>" + "<td>" + parseFloat(f.lat).toFixed(5) + "</td>" + "<td>" + parseFloat(f.lng).toFixed(7) + "</td>" + "<td>" + f.time + "</td>" +  "<td>" + f.src + "</td>" + "</tr>"
                         $(tblRow).appendTo("#record tbody");
                         count += 1;
                     });
@@ -142,34 +238,44 @@
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#">Graph</a></li>
-                                <li><a href="#">Table (Sound vs Time)</a></li>
+                                <li><a href="#">Graph (Sound, Time, Location)</a></li>
                                 <li><a href="#panoidTable">Panorama ID</a></li>
                                 <li><a href="#recordTable">Recording</a></li>
+                                <li><a href="#panoChart">Panorama Chart</a></li>
                             </ul>
                         </div>
                     </div>
                 </nav>
 
-                <h2>Graph</h2>
+                <h2>Graph (Sound, Time, Location)</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-                <div class="line"></div>
-
-                <h2 id="table">Table (Sound vs Time)</h2>
+                <div class="profile">
+                    <table id= "table">
+                        <thead>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="line"></div>
 
                 <h2 id="panoidTable">Panorama ID</h2>
                 <div class="profile">
-                    <table id= "panoid" border="2">
+                    <table id= "panoid">
                         <thead>
-                            <th style="padding: 10px">Number</th>
-                            <th style="padding: 10px">Location Name</th>
-                            <th style="padding: 10px">Pano ID</th>
-                            <th style="padding: 10px">Latitude</th>
-                            <th style="padding: 10px">Longitude</th>
+                            <th>Number</th>
+                            <th>Location Name</th>
+                            <th>Pano ID</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
                         </thead>
                         <tbody>
                         </tbody>
@@ -180,17 +286,533 @@
 
                 <h2 id="recordTable">Recording</h2>
                 <div class="profile">
-                    <table id= "record" border="2">
+                    <table id= "record">
                         <thead>
-                            <th style="padding: 10px">Number</th>
-                            <th style="padding: 10px">Classification</th>
-                            <th style="padding: 10px">Latitude</th>
-                            <th style="padding: 10px">Longitude</th>
-                            <th style="padding: 10px">Time</th>
-                            <th style="padding: 10px">Audio Source</th>
+                            <th>Number</th>
+                            <th>Classification</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Time</th>
+                            <th>Audio Source</th>
                         </thead>
                         <tbody>
                         </tbody>
+                    </table>
+                </div>
+                
+                <div class="line"></div>
+                
+                <h2 id="panoChart">Panorama Chart</h2>
+                <h4 id="table">Route 1</h4>
+                <div class="profile">
+                    <table id= "route1">
+                        <tr>
+                            <th style="width: 25rem;"></th>
+                            <th>0000</th>
+                            <th>0200</th>
+                            <th>0400</th>
+                            <th>0600</th>
+                            <th>0800</th>
+                            <th>1000</th>
+                            <th>1200</th>
+                            <th>1400</th>
+                            <th>1600</th>
+                            <th>1800</th>
+                            <th>2000</th>
+                            <th>2200</th>
+                        </tr>
+                        <tr>
+                            <th>MRT 1</th>  <!-- mrt 1/5 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>MRT 2</th>  <!-- mrt 3/5 -->
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>MRT 3</th>  <!-- mrt 5/5 -->
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Road Junction (Mall)</th>
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Road Junction (HDB)</th>
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td></td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Path Under MRT 1</th>  <!-- path 3/7 -->
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1400 -->
+                            <td></td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Path Under MRT 2</th>  <!-- path 5/7 -->
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1400 -->
+                            <td></td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Path Under MRT 3</th>  <!-- path 7/7 -->
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1400 -->
+                            <td></td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Shell</th>
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Pathway Beside Shell 1</th>  <!-- second pathway to shell -->
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Pathway Beside Shell 2</th>  <!-- first pathway to shell -->
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Entrance to Street 12</th>  <!-- end of century square route -->
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Bus Stop Blk 141</th>
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td></td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Road Junction (Round Market)</th>
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Path to Round Market</th>
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Round Market 1</th>  <!-- market 1/4 -->
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Round Market 2</th>  <!-- market 2/4 -->
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Round Market 3</th>  <!-- market 3/4 -->
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Round Market 4</th>  <!-- market 4/4 -->
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Round Market Centre</th>  <!-- market centre -->
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                    </table>
+                </div>
+                
+                <h4 id="table">Route 2</h4>
+                <div class="profile">
+                    <table id= "route2">
+                        <tr>
+                            <th style="width: 25rem;"></th>
+                            <th>0000</th>
+                            <th>0200</th>
+                            <th>0400</th>
+                            <th>0600</th>
+                            <th>0800</th>
+                            <th>1000</th>
+                            <th>1200</th>
+                            <th>1400</th>
+                            <th>1600</th>
+                            <th>1800</th>
+                            <th>2000</th>
+                            <th>2200</th>
+                        </tr>
+                        <tr>
+                            <th>Mid Point</th>
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Blk 156</th>
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Blk 160</th>
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Beside Tampines Pri/Sec School</th>
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td></td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>End of Blk 166</th>  <!-- near end of century square route -->
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td></td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2200 -->
+                        </tr>
+                    </table>
+                </div>
+                
+                <h4 id="table">Nearby Spots</h4>
+                <div class="profile">
+                    <table id= "route3">
+                        <tr>
+                            <th style="width: 25rem;"></th>
+                            <th>0000</th>
+                            <th>0200</th>
+                            <th>0400</th>
+                            <th>0600</th>
+                            <th>0800</th>
+                            <th>1000</th>
+                            <th>1200</th>
+                            <th>1400</th>
+                            <th>1600</th>
+                            <th>1800</th>
+                            <th>2000</th>
+                            <th>2200</th>
+                        </tr>
+                        <tr>
+                            <th>Blk 163</th>
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Blk 164</th>
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td></td>  <!-- 1600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Blk 165</th>
+                            <td></td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td></td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td></td>  <!-- 1600 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Blk 166</th>
+                            <td></td>  <!-- 0000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td></td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 2200 -->
+                        </tr>
+                        <tr>
+                            <th>Tampines Green Garden</th>
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 0000 -->
+                            <td></td>  <!-- 0200 -->
+                            <td></td>  <!-- 0400 -->
+                            <td></td>  <!-- 0600 -->
+                            <td></td>  <!-- 0800 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1000 -->
+                            <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;</td>  <!-- 1200 -->
+                            <td></td>  <!-- 1400 -->
+                            <td></td>  <!-- 1600 -->
+                            <td></td>  <!-- 1800 -->
+                            <td></td>  <!-- 2000 -->
+                            <td></td>  <!-- 2200 -->
+                        </tr>
                     </table>
                 </div>
             </div>

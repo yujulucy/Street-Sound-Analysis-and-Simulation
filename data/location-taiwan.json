@@ -1,0 +1,77 @@
+	{
+	    "id": "pano",
+	    
+	    "locations": [
+	        {
+	            "name": "20mall",
+                "panoid": "CAoSLEFGMVFpcE4zUmpJOV9vMzVCQVZ3dzFycWdRZ1ZZNlozOFczNjlISE5vU2gy",
+	            "lat": "25.01454757187443",
+	            "lng": "121.30027011036873",
+	            "time": "2000"
+	        },
+	        {
+	            "name": "20park",
+                "panoid": "CAoSLEFGMVFpcFB3cTlDQWVvNVdDRDdzUWExRnN3UHRwcUhlSzlzdjRISjg3ZFhf",
+	            "lat": "25.01576105242705",
+	            "lng": "121.30036264657974",
+	            "time": "2000"
+	        },
+            {
+	            "name": "18artcentre",
+                "panoid": "CAoSLEFGMVFpcE1TREhNdHZTSGI4YlYtaVVLRWFmUjQ4aDRLM2FsWWZvdzZvWkY5",
+	            "lat": "25.01724628128418",
+	            "lng": "121.29831478006668",
+	            "time": "1800"
+	        },
+            {
+	            "name": "20artcentre",
+                "panoid": "CAoSLEFGMVFpcE9mdzRoSmNuRVh3cTRoR2V3QUZndUhIODVpaVlxdU1uSTdjQ3NY",
+	            "lat": "25.01702495532437",
+	            "lng": "121.29855651408434",
+	            "time": "2000"
+	        },
+            {
+	            "name": "12office",
+                "panoid": "CAoSLEFGMVFpcE5Ka3RuaFJGakZqVmlYM1dVQ2ZDOWVCVnVfbG1hMm9PS1Fnd3Y2",
+	            "lat": "25.02220803640208",
+	            "lng": "121.2929617613554",
+	            "time": "1200"
+	        },
+            {
+	            "name": "14office",
+                "panoid": "CAoSLEFGMVFpcFA3TUE0UklHRnhnbkNnaXVSTUo0SUtfS2gyNGVjdlE5bUJlQmYz",
+	            "lat": "25.0222083",
+	            "lng": "121.29296780000004",
+	            "time": "1400"
+	        },
+            {
+	            "name": "16office",
+                "panoid": "CAoSLEFGMVFpcE5ta0R2Qzd2dU5LWFRBT3VIaU01aHpob2VfTks4ekswN19HVU5D",
+	            "lat": "25.0222083402105",
+	            "lng": "121.29299260675907",
+	            "time": "1600"
+	        },
+            {
+	            "name": "20office",
+                "panoid": "CAoSLEFGMVFpcFB5dUl0YVRnMWVKNUZpazh3YXhQTGpsMDN3QUFkS0JYb2d0RV9E",
+	            "lat": "25.02220803640208",
+	            "lng": "121.29299260675907",
+	            "time": "2000"
+	        },
+            {
+	            "name": "footstep3",
+                "panoid": "",
+	            "lat": "1.352825",
+	            "lng": "103.9439019",
+	            "time": "1000"
+	        },
+            {
+	            "name": "trafficlight",
+                "panoid": "",
+	            "lat": "1.3528449",
+	            "lng": "103.943308",
+	            "time": "1000"
+	        }
+
+	    ]
+	}

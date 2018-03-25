@@ -75,7 +75,7 @@
 	            "pause": "1000"
 	        },
             {
-	            "name": "MRT",
+	            "name": "mrt",
 	            "lat": "1.352567012619413",
 	            "lng": "103.94553121179342",
                 "time": "1200",
@@ -83,7 +83,7 @@
 	                "audio/26 Feb 18 11.08pm Traffic Junction Mrt Side.mp3"
 	            ],
 	            "db": "80",
-	            "pause": "1000"
+	            "pause": "180000"
 	        },
             {
 	            "name": "trafficlight",
@@ -193,7 +193,7 @@
 	                "audio/29 Jan 18 2.11pm Seventh Pillar - Mrt.mp3"
 	            ],
 	            "db": "80",
-	            "pause": "1000"
+	            "pause": "180000"
 	        },
             {
 	            "name": "construction",
@@ -215,7 +215,7 @@
 	                "audio/29 Jan 18 2.16pm Tenth Pillar - Mrt.mp3"
 	            ],
 	            "db": "80",
-	            "pause": "1000"
+	            "pause": "180000"
 	        },
             {
 	            "name": "trafficlight",
@@ -636,7 +636,7 @@
 	            "pause": "1000"
 	        },
             {
-	            "name": "MRT",
+	            "name": "mrt",
 	            "lat": "1.350435864523138",
 	            "lng": "103.94656931439638",
                 "time": "1200",
@@ -644,7 +644,7 @@
 	                "audio/20 Mar 2018 1.54pm Garden Mrt.mp3"
 	            ],
 	            "db": "100",
-	            "pause": "1000"
+	            "pause": "180000"
 	        },
             {
 	            "name": "bird",
@@ -656,6 +656,963 @@
 	            ],
 	            "db": "80",
 	            "pause": "1000"
+	        },
+            {
+	            "name": "ventilation",
+	            "lat": "1.353613787997235",
+	            "lng": "103.94506517797709",
+                "time": "0000",
+	            "src": [
+	                "audio/21 Mar 2018 1.54am Mrt 1 Ventilation.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "ventilation",
+	            "lat": "1.353320168052116",
+	            "lng": "103.94535150378942",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 2.01am Mrt 3 Ventilation And Car.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.35308218839016",
+	            "lng": "103.94551277160645",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 2.08am Mrt 4 Mrt Leaving.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.352737144047476",
+	            "lng": "103.94580766568765",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 2.10am Mrt 5 Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "Air Conditioner",
+	            "lat": "1.352750379747127",
+	            "lng": "103.945646794343",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 2.14am Mrt 5 Air Con.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.352529454289527",
+	            "lng": "103.94563657412289",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 2.14am Cross Road Mrt - Car.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "bicyle",
+	            "lat": "1.352426194579416",
+	            "lng": "103.94570471232362",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 2.25am Cross Road HDB Side - Bicycle And Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.351659337670738",
+	            "lng": "103.9463734254241",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 2.35am Path Under Mrt 3 - People Chattering.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.351897987837843",
+	            "lng": "103.94617795944214",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 2.54am Path Under Mrt 5 - Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "insects",
+	            "lat": "1.350788867691121",
+	            "lng": "103.94703023135662",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 2.59am Path Under Mrt 5 - Insects.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.349139810861605",
+	            "lng": "103.94842352941214",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.02am Path Under Mrt 6 - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.34906133221021",
+	            "lng": "103.94838022906401",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.07am Path Under Mrt 7 - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348791035638043",
+	            "lng": "103.94749123727775",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.14am Shell - Car, Truck.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348791035638043",
+	            "lng": "103.94749123727775",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.18am Shell - Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.349075411818448",
+	            "lng": "103.94721362739801",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.22am Blk 166 - Mrt And Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348575411818448",
+	            "lng": "103.94721362739801",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.23am Blk 166 - Motorcycle.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.349175065573434",
+	            "lng": "103.94821329212189",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.26am Blk 163 - Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348714878977967",
+	            "lng": "103.94724017771682",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.26am Blk 163 - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348536857675085",
+	            "lng": "103.94672325099032",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.31am Path Towards Shell (2) - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348318765510111",
+	            "lng": "103.94602629651854",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.33am Path Towards Shell (1) - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348190907603679",
+	            "lng": "103.94561369688267",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.40am End Of Route - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "truck",
+	            "lat": "1.347973210838981",
+	            "lng": "103.9451092618491",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.43am Bus Stop - Truck.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "200000"
+	        },
+            {
+	            "name": "bicycle and bus",
+	            "lat": "1.347973210838981",
+	            "lng": "103.9451092618491",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.44am Bus Stop - Bicycle And Bus.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348575409505755",
+	            "lng": "103.94558935144596",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.46am Near End Of Route - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "60000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348427037660839",
+	            "lng": "103.94564373281719",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.48am Near End Of Route - Truck.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348676077692247",
+	            "lng": "103.94555224986368",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.49am Near End Of Route - Car Coming Out.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "120000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.349037593125863",
+	            "lng": "103.94539051101822",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.53am Beside End Of Sch - Car Engine.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "120000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348955117148248",
+	            "lng": "103.94542433949755",
+                "time": "0200",
+	            "src": [
+	                "audio/21 Mar 2018 3.51am Beside End Of Sch - Car.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "120000"
+	        },
+            {
+	            "name": "children",
+	            "lat": "1.351267604966835",
+	            "lng": "103.9446174840449",
+                "time": "2000",
+	            "src": [
+	                "audio/21 Mar 2018 9.54pm Blk 156 - Children.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "10000"
+	        },
+            {
+	            "name": "motorcycle",
+	            "lat": "1.351268179270279",
+	            "lng": "103.94461590796709",
+                "time": "2000",
+	            "src": [
+	                "audio/21 Mar 2018 9.55pm Blk 156 - Motorcycle.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.351168179270279",
+	            "lng": "103.94471590796709",
+                "time": "2000",
+	            "src": [
+	                "audio/21 Mar 2018 9.58pm Blk 156 - Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.350628527146097",
+	            "lng": "103.94463191586237",
+                "time": "2200",
+	            "src": [
+	                "audio/21 Mar 2018 10.05pm Blk 160 - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "footstep",
+	            "lat": "1.350628527146097",
+	            "lng": "103.94463191586237",
+                "time": "2200",
+	            "src": [
+	                "audio/21 Mar 2018 10.06pm Blk 160 - Footstep.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.350544519304232",
+	            "lng": "103.94657157361507",
+                "time": "2200",
+	            "src": [
+	                "audio/21 Mar 2018 10.15pm Garden - Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.350546530402162",
+	            "lng": "103.94657090306282",
+                "time": "2200",
+	            "src": [
+	                "audio/21 Mar 2018 10.16pm Garden - People Talking.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "footstep",
+	            "lat": "1.350451822513689",
+	            "lng": "103.94659094749689",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 8.26am Blk 164 - Footstep.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.349351822513689",
+	            "lng": "103.94662094749689",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 8.29am Blk 164 - People Talking, Mrt, Bird.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "truck",
+	            "lat": "1.346130719969315",
+	            "lng": "103.94504706811847",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 8.46am Path To Round Market - Truck.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "5000"
+	        },
+            {
+	            "name": "footstep",
+	            "lat": "1.346202219803287",
+	            "lng": "103.94499007612467",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 8.49am Path To Round Market - Footstep And Car.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "bird",
+	            "lat": "1.345997087439304",
+	            "lng": "103.94478287547827",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 8.52am Round Market 1-4 - Bird, People, Truck.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "push cart",
+	            "lat": "1.345797087439304",
+	            "lng": "103.94378287547827",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 8.54am Round Market 1-4 - Push Cart.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "10000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.345827087439304",
+	            "lng": "103.94428287547827",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.24am Round Market 1-4 - People Talking.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "clearing plates",
+	            "lat": "1.345827087439304",
+	            "lng": "103.94428287547827",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.30am Round Market 1-4 - Plates.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.345857087439304",
+	            "lng": "103.94425287547827",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.27am Round Market 1-4 - Children.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "market",
+	            "lat": "1.345196668834446",
+	            "lng": "103.94467391073704",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.01am Round Market 4-4 - Market Sound.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "market",
+	            "lat": "1.345236668834446",
+	            "lng": "103.94427391073704",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.03am Round Market 4-4 - Selling.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "market",
+	            "lat": "1.345737320123547",
+	            "lng": "103.9445361122489",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.07am Round Market Centre - General Sound.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "bird",
+	            "lat": "1.345637320123547",
+	            "lng": "103.9445361122489",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.09am Round Market Centre - Bird.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "bird",
+	            "lat": "1.345587157843243",
+	            "lng": "103.94424006342888",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.13am Round Market 3-4 - Bird.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "ambulance",
+	            "lat": "1.345507320123547",
+	            "lng": "103.9445361122489",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.14am Round Market 3-4 - Ambulance.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.345950161732703",
+	            "lng": "103.94438456743956",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.21am Round Market 2-4 - People Talking.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "metal gate",
+	            "lat": "1.345950161732703",
+	            "lng": "103.94436456743956",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.22am Round Market 2-4 - Metal Door-gate.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.345900161732703",
+	            "lng": "103.94437456743956",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.24am Round Market 2-4 - People Chattering.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "3000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.347420577068688",
+	            "lng": "103.94461597642248",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.35am Path To Round Market Junction After Bus Stop - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "streetmusic",
+	            "lat": "1.353613787997235",
+	            "lng": "103.94506517797709",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.17pm Mrt 1 - Street Music.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "streetmusic",
+	            "lat": "1.353321843965141",
+	            "lng": "103.94534949213266",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.21pm Mrt 3 - Street Music And People Chattering.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "atm",
+	            "lat": "1.353421843965141",
+	            "lng": "103.94514949213266",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.24pm Mrt 3 - Atm.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "bus",
+	            "lat": "1.353109338183757",
+	            "lng": "103.94550673663616",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.25pm Mrt 4 - Small Bus.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "ventilation",
+	            "lat": "1.352759407487385",
+	            "lng": "103.94575517624617",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.26pm Mrt 5 - Mrt, Car, Ventilation.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.352813373064762",
+	            "lng": "103.94586078289319",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.27pm Mrt 5 - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "skateboarding",
+	            "lat": "1.353096903722246",
+	            "lng": "103.94568141765012",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.30pm Mrt 5 - Skateboarding.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "1000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.352529454289527",
+	            "lng": "103.94563657412289",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.36pm Road Junction Mall Side - Mrt And Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.352265683344315",
+	            "lng": "103.94568510353565",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.40pm Road Junction HDB Side - Traffic, Children, People Chattering.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "bicycle",
+	            "lat": "1.348085615651881",
+	            "lng": "103.94516710191965",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.41am Bus Stop - Bicycle And Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "bus",
+	            "lat": "1.34809667670168",
+	            "lng": "103.94518353044987",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.41am Bus Stop - Bus.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "5000"
+	        },
+            {
+	            "name": "bicycle",
+	            "lat": "1.351543699589744",
+	            "lng": "103.94648104906082",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.42pm Path Under Mrt 3 - Bicycle.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "5000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.351897987837843",
+	            "lng": "103.94617795944214",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.45pm Path Under Mrt 3 - People Chattering, Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "120000"
+	        },
+            {
+	            "name": "footstep",
+	            "lat": "1.350785851044519",
+	            "lng": "103.94703157246113",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.50pm Path Under Mrt 5 - Footstep.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.350786521410423",
+	            "lng": "103.94703090190887",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.51pm Path Under Mrt 5 - Mrt And Bicycle.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348263262809279",
+	            "lng": "103.9455533400178",
+                "time": "0800",
+	            "src": [
+	                "audio/22 Mar 2018 9.56am End Of Century Square Route - Traffic, People Chattering, Car Braking.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.349310710407688",
+	            "lng": "103.94827913492918",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.54pm Path Under Mrt 7 - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.349346239822323",
+	            "lng": "103.94829154014587",
+                "time": "2000",
+	            "src": [
+	                "audio/22 Mar 2018 9.56pm Path Under Mrt 7 - People Chattering.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "Shell",
+	            "lat": "1.348845811321262",
+	            "lng": "103.9473544433713",
+                "time": "2200",
+	            "src": [
+	                "audio/22 Mar 2018 10.01pm Shell - Car And Shell.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.348593753524218",
+	            "lng": "103.94559860229492",
+                "time": "1000",
+	            "src": [
+	                "audio/22 Mar 2018 10.03am Near End Of Century Square Route - Car, Rubbish Truck, Small Bus.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "rubbish truck",
+	            "lat": "1.3484924",
+	            "lng": "103.94530310000005",
+                "time": "1000",
+	            "src": [
+	                "audio/22 Mar 2018 10.04am Near End Of Century Square Route - Rubbish Truck.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.349081780299077",
+	            "lng": "103.94721362739801",
+                "time": "2200",
+	            "src": [
+	                "audio/22 Mar 2018 10.04pm Blk 166 - People Talking On Phone And Footstep.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "6000"
+	        },
+            {
+	            "name": "chattering",
+	            "lat": "1.349070048887369",
+	            "lng": "103.94543901085854",
+                "time": "1000",
+	            "src": [
+	                "audio/22 Mar 2018 10.06am Beside Sch - People Chattering And Car.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "6000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.34937808222178",
+	            "lng": "103.94721329212189",
+                "time": "2200",
+	            "src": [
+	                "audio/22 Mar 2018 10.06pm Blk 163 - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.349378752588079",
+	            "lng": "103.94721999764442",
+                "time": "2200",
+	            "src": [
+	                "audio/22 Mar 2018 10.09pm Blk 163 - Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.351267604966835",
+	            "lng": "103.9446174840449",
+                "time": "1000",
+	            "src": [
+	                "audio/22 Mar 2018 10.13am Blk 156 - Traffic.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "bird",
+	            "lat": "1.351266838538711",
+	            "lng": "103.94461456686258",
+                "time": "1000",
+	            "src": [
+	                "audio/22 Mar 2018 10.20am Blk 156 - Bird.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "bird",
+	            "lat": "1.350643404253056",
+	            "lng": "103.94476478923298",
+                "time": "1000",
+	            "src": [
+	                "audio/22 Mar 2018 10.22am Blk 160 - Bird.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "4000"
+	        },
+            {
+	            "name": "traffic",
+	            "lat": "1.350649096394624",
+	            "lng": "103.94476275891066",
+                "time": "1000",
+	            "src": [
+	                "audio/22 Mar 2018 10.22am Blk 160 - Car.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "2000"
+	        },
+            {
+	            "name": "footstep",
+	            "lat": "1.350435880379013",
+	            "lng": "103.9467699790689",
+                "time": "1000",
+	            "src": [
+	                "audio/22 Mar 2018 10.33am Garden - Footstep.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "6000"
+	        },
+            {
+	            "name": "mrt",
+	            "lat": "1.350425864523138",
+	            "lng": "103.94646931439638",
+                "time": "1000",
+	            "src": [
+	                "audio/22 Mar 2018 10.33am Garden - Mrt.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "construction",
+	            "lat": "1.35054552485321",
+	            "lng": "103.94657023251057",
+                "time": "1000",
+	            "src": [
+	                "audio/22 Mar 2018 10.34am Garden - Construction.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
+	        },
+            {
+	            "name": "cat",
+	            "lat": "1.349437744821766",
+	            "lng": "103.94630569964647",
+                "time": "2200",
+	            "src": [
+	                "audio/22 Mar 2018 11.48pm Blk 164 - Cat.mp3"
+	            ],
+	            "db": "80",
+	            "pause": "180000"
 	        }
 
 	    ]
