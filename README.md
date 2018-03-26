@@ -1,46 +1,46 @@
 # Street-Sound-Analysis-and-Simulation
 
-## Main Files
+### Main Files
 This project consists of 3 main webpages (home.html, start.html, and analysis.html).  
 
-home.html (Home):
+#### home.html:
 - General homepage for the whole project  
 
-start.html:
+#### start.html:
 This webpage is displayed when "Street View" on the sidebar is clicked.
 Currently, not all locations have displays from all timings shown in the choices.
 ![instr1](https://user-images.githubusercontent.com/12662268/37923498-d8b1eb26-3161-11e8-8faf-bc0f9a1c6c97.png)
 
-analysis.html:
+#### analysis.html:
 This webpage is displayed when "Data" on the sidebar is clicked.
 Displays information of data collected and used in this project (panorama and audio files).
 Table of panoramas are also included here (the ticks show the panoramas available for testing)
 ![chart](https://user-images.githubusercontent.com/12662268/37923876-d93031d8-3162-11e8-8bf0-2c71a9869f96.png)
 
-Similar Projects (found in the any of the 3 webpages above):
+#### Similar Projects (found in the any of the 3 webpages above):
 - Sounds of Street View
 - Sound City Project
 - Pregoneros de Medellín
 
-Download Source (found in the any of the 3 webpages above):
+#### Download Source (found in the any of the 3 webpages above):
 - Leads to this github site to download the scripts for this project  
 
-## Data Collected
+### Data Collected
 Data.docx:
 - Keeps track of the panoramas taken  
 - Contains information such as the position of the panoramas are taken and the recordings made
 
-## Testing script
+### Testing script
 index.html:
 - A webpage displaying only the street view without links to any other pages  
 
-## Screenshots of Routes from Tampines MRT Station to Round Market
-### General Route
+### Screenshots of Routes from Tampines MRT Station to Round Market
+#### General Route
 Red, green, orange, and blue lines indicate the available paths.
 Circle marks the destination (Round Market)
 ![routes](https://user-images.githubusercontent.com/12662268/37922309-cd2433b6-315e-11e8-89d0-fbc0eed95dd0.png)
 
-### Parts of Routes
+#### Parts of Routes
 Red spots indicate the positions available for testing.
 
 Route (1/4)
