@@ -294,6 +294,7 @@
                                 alert("loading default audio");
                                 checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
                                 //alert("weird");
+                                //index += 1;
                             }
 
                             //checkAudio(newLat, newLng);
@@ -335,8 +336,6 @@
 
                                 //checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
                                 //checkAudio(updatedPos.lat(), updatedPos.lng(), panorama.getPov().heading).pipe(checkFilesArray);
-
-                                index += 1;
                             });
 
                             google.maps.event.addListener(panorama, 'pov_changed', function() {
@@ -355,6 +354,8 @@
                             });
 
                             map.setStreetView(panorama);
+                            
+                            index += 1;
                         }
 
                         //google.maps.event.addDomListener(window, 'load', initialize);
@@ -418,8 +419,8 @@
                                 var index = 0;
                                 const howlerList = {};
                                 //alert(newLat.toString());
-                                alert("got here");
-                                alert("newLat in check audio: " + newLat.toString() + " newLng: " + newLng.toString());
+                                //alert("got here");
+                                //alert("newLat in check audio: " + newLat.toString() + " newLng: " + newLng.toString());
                                 supposedTime = checkCurrentTime(newLat, newLng);
 
                                 $.getJSON('data/audio.json', function(data) {
@@ -711,6 +712,8 @@
 
                                                         flag = false;
                                                         index += 1;
+                                                        //alert("1");
+                                                        checkAudio(f.lat, f.lng, panorama.getPov().heading).pipe(checkFilesArray);
                                                     }
                                                 }
                                             }
@@ -724,7 +727,7 @@
                                                     //alert(index);
 
                                                     if (index == 0) {
-                                                        //alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+                                                        alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
 
                                                         //newTime = "#" + f.time;
                                                         //url = window.location.href;
@@ -743,6 +746,8 @@
                                                         //alert("am i in " + newPos.toString());
                                                         flag = false;
                                                         index += 1;
+                                                        //alert("2");
+                                                        checkAudio(f.lat, f.lng, panorama.getPov().heading).pipe(checkFilesArray);
                                                     }
                                                 }
                                             }
@@ -758,13 +763,15 @@
 
                                                         flag = false;
                                                         index += 1;
+                                                        //alert("3");
+                                                        checkAudio(f.lat, f.lng, panorama.getPov().heading).pipe(checkFilesArray);
                                                     }
                                                 }
                                             }
                                             else {
                                                 if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
                                                     if (index == 0) {
-                                                        //alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+                                                        alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
 
                                                         panorama.setPano(f.panoid);
                                                         var newPos = new google.maps.LatLng(f.lat, f.lng);
@@ -773,6 +780,8 @@
 
                                                         flag = false;
                                                         index += 1;
+                                                        //alert("4");
+                                                        checkAudio(f.lat, f.lng, panorama.getPov().heading).pipe(checkFilesArray);
                                                     }
                                                 }
                                             }
@@ -781,7 +790,7 @@
                                 });
                             }); 
                             //alert(newPos.toString());
-                            checkAudio(newPos.lat(), newPos.lng(), panorama.getPov().heading).pipe(checkFilesArray);
+                            //checkAudio(newPos.lat(), newPos.lng(), panorama.getPov().heading).pipe(checkFilesArray);
                             //return newPos;
                         }
 
@@ -900,7 +909,7 @@
                             });
                         }
 
-                        alert("test");
+                        //alert("test");
 
                     </script>
                 </div>
