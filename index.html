@@ -232,10 +232,6 @@
                         pitch: 10
                     }
                 });
-                
-                if (index == 0) {
-                    //checkAudio(defaultPos.lat, defaultPos.lng, panorama.getPov().heading).pipe(checkFilesArray);
-                }
 
                 //alert(panorama.getPosition().toString());
                 /*var musicMarker2 = new google.maps.Marker({
@@ -313,6 +309,7 @@
                     alert("loading default audio");
                     checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
                     //alert("weird");
+                    index += 1;
                 }
                 
                 //checkAudio(newLat, newLng);
@@ -365,8 +362,9 @@
                     }*/
                     
                     stopAudio();
-                    
+                    alert("positon changed");
                     checkPano(newLat, newLng);
+                        
                     //var updatedPos = checkPano(newLat, newLng);
                     //alert(updatedPos.toString());
                     //alert(updatedPos.lat().toString());
@@ -399,8 +397,6 @@
                     
                     //prevPos.lat() = newLat;
                     //prevPos.lng() = newLng;
-                    
-                    index += 1;
                 });
                 
                 google.maps.event.addListener(panorama, 'pov_changed', function() {
@@ -512,8 +508,8 @@
                     var index = 0;
                     const howlerList = {};
                     //alert(newLat.toString());
-                    alert("got here");
-                    alert("newLat in check audio: " + newLat.toString() + " newLng: " + newLng.toString());
+                    //alert("got here");
+                    //alert("newLat in check audio: " + newLat.toString() + " newLng: " + newLng.toString());
                     supposedTime = checkCurrentTime(newLat, newLng);
 
                     /*if (sound != null) {
@@ -593,7 +589,7 @@
                                 //alert(diffLat.toString());
                                 //alert(diffLng.toString());
 
-                                var loop = (!parseFloat(f.pause)) ? true : false;
+                                //var loop = (!parseFloat(f.pause)) ? true : false;
 
                                 if ((diffLat < 0.0005) && (diffLng < 0.0004)) {// && (f.time == currTime)) {
                                     panPos = updatePan(diffLat, diffLng, heading);
@@ -621,7 +617,7 @@
                                     files.push(f.src.toString());
                                     volArr.push(vol.toString());
                                     panPosArr.push(panPos.toString());
-                                    pauseArr.push(loop.toString());
+                                    //pauseArr.push(loop.toString());
                                     
                                     //alert(files.toString());
 
@@ -653,7 +649,7 @@
                                 //checkCurrentTime(newLat, newLng);
                                 //alert("supposedTime: " + supposedTime);
                                 
-                                var loop = (!parseFloat(f.pause)) ? true : false;
+                                //var loop = (!parseFloat(f.pause)) ? true : false;
                                 
                                 if (index == 0) {
                                     //alert("else if");
@@ -696,7 +692,7 @@
                                     files.push(f.src.toString());
                                     volArr.push(vol.toString());
                                     panPosArr.push(panPos.toString());
-                                    pauseArr.push(loop.toString());
+                                    //pauseArr.push(loop.toString());
                                 }
                                 
                                 /*//if ((newLat.toString() == f.lat) && (newLng.toString() == f.lng)) {
@@ -759,7 +755,7 @@
                         for (i = 0; i < files.length; i++) {
                             sound[i] = new Howl({
                                 src: files[i],
-                                loop: pauseArr[i],
+                                loop: true, //pauseArr[i],
                                 html5: true
                             });
                             
@@ -943,6 +939,10 @@
                 }
             }
             
+            function callCheckAudio() {
+                
+            }
+            
             function checkPano(currentLat, currentLng) { 
                 var index = 0;
                 var flag = true;
@@ -962,7 +962,7 @@
                         latDiff = Math.abs(currentLat - f.lat);
                         lngDiff = Math.abs(currentLng - f.lng);
                         
-                        if (flag) {
+                        //if (flag) {
                             if (!(window.location.href.endsWith("00"))) {
                                 if(f.time == "0000") {
                                     //alert("this is bullshit");
@@ -978,7 +978,7 @@
                                             var newPos = new google.maps.LatLng(f.lat, f.lng);
                                             //map.setCenter(new google.maps.LatLng(f.lat, f.lng));
                                             map.setCenter(newPos);
-                                            
+                                            //alert("1");
                                             flag = false;
                                             index += 1;
                                         }
@@ -1011,6 +1011,7 @@
                                             //map.setCenter(new google.maps.LatLng(f.lat, f.lng));
                                             map.setCenter(newPos);
                                             //alert("am i in " + newPos.toString());
+                                            //alert("2");
                                             flag = false;
                                             index += 1;
                                         }
@@ -1025,7 +1026,7 @@
                                             var newPos = new google.maps.LatLng(f.lat, f.lng);
                                             //map.setCenter(new google.maps.LatLng(f.lat, f.lng));
                                             map.setCenter(newPos);
-  
+                                            //alert("3");
                                             flag = false;
                                             index += 1;
                                         }
@@ -1040,19 +1041,32 @@
                                             var newPos = new google.maps.LatLng(f.lat, f.lng);
                                             //map.setCenter(new google.maps.LatLng(f.lat, f.lng));
                                             map.setCenter(newPos);
-
+                                            //alert("4");
                                             flag = false;
                                             index += 1;
                                         }
                                     }
                                 }
                             }
-                        }
+                            //alert(index);
+                            if(index == 1) {
+                                return false;
+                            }
+                        //}
+                        
                     });
                 }); 
                 //alert(newPos.toString());
-                checkAudio(newPos.lat(), newPos.lng(), panorama.getPov().heading).pipe(checkFilesArray);
+
+                setTimeout(stalling(newPos.lat(), newPos.lng(), panorama.getPov().heading), 300);
+                //checkAudio(newPos.lat(), newPos.lng(), panorama.getPov().heading).pipe(checkFilesArray);
+
                 //return newPos;
+            }
+            
+            function stalling(lat, lng, heading) {
+                //alert("waiting");
+                checkAudio(lat, lng, heading).pipe(checkFilesArray);
             }
             
             function checkBtn(event) {
