@@ -9,8 +9,11 @@
         <!-- Load the Sounds of Street View code -->
         <script src="js/sosv.min.js"></script>
         <!--script src="js/sosv.js"></script-->
-        <script src="howler.js-master/src/howler.core.js"></script>
-        <script src="howler.js-master/src/plugins/howler.spatial.js"></script>
+        <!--script src="howler.js-master/src/howler.core.js"></script-->
+        <!-- cdn: https://cdnjs.com/libraries/howler -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.spatial.min.js"></script>
+        <!--script src="howler.js-master/src/plugins/howler.spatial.js"></script-->
         <script src="data/audio.json"></script>
         
         <!--base href="https://www.w3schools.com/images/"-->
@@ -354,9 +357,12 @@
                     
                     stopAudio();
                     
-                    //checkPano(newLat, newLng);
+                    var updatedPos = checkPano(newLat, newLng);
+                    //alert(updatedPos.toString());
+                    //alert(updatedPos.lat().toString());
                     
-                    checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
+                    //checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
+                    //checkAudio(updatedPos.lat(), updatedPos.lng(), panorama.getPov().heading).pipe(checkFilesArray);
                     
                     /*checkAudio(newLat, newLng, function() {
                         if (files.length > 0) {
@@ -432,10 +438,6 @@
                     $.each(data.locations, function(i, f) {
                         if (flag) {
                             if ((lat.toString() == f.lat) && (lng.toString() == f.lng)) {
-                                if(f.name.endsWith("163")) {
-                                    //alert("lat is true, lng is true. lat: " + lat.toString() + " lng: " + lng.toString());
-                                }
-                                
                                 hexSign = "#t";
                                 validateTime = hexSign.concat(f.time);
                                 
@@ -461,9 +463,6 @@
                                 //alert("supposedTime when setting: " + supposedTime);
                             }
                             else {
-                                if(f.name.endsWith("163")) {
-                                    //alert("lat is false, lng is false. lat: " + lat.toString() + " lng: " + lng.toString());
-                                }
                                 for (i = 0; i < timearr.length; i++) {
                                     $(timearr[i].toString()).css('background-color', '');
                                 }
@@ -474,6 +473,25 @@
                 //alert("supposed time = " + supposedTime);
                 return supposedTime;
             }
+            
+            /*function checkPano(newLat, newLng) {
+                supposedTime = checkCurrentTime(newLat, newLng);
+                
+                var timeString = window.location.href.substr(window.location.href.lastIndexOf('#') + 1);
+                
+                $.getJSON('data/location.json', function(data) {
+                    $.each(data.locations, function(i, f) {
+                        if (supposedTime == f.time) {
+                            setLocation(map, f.panoid, panorama);
+                        }
+                        else {
+                            timeString = timeString.replace(timeString, supposedTime);
+                            //alert("timeString: " + timeString);
+                        }
+                    });
+                });
+                
+            }*/
             
             function checkAudio(newLat, newLng, heading) {//, callback) {
                 var d = $.Deferred();
@@ -916,52 +934,205 @@
             }
             
             function checkPano(currentLat, currentLng) { 
+                var index = 0;
+                var flag = true;
                 //currentPos = panorama.getPosition();
                 //currentLat = currentPos.lat();
                 //currentLng = currentPos.lng();
                 
                 currTime = checkCurrentTime(currentLat, currentLng);
+                //alert(currTime);
                 
-                displayTime = window.location.href.split('#')[1];
+                //displayTime = window.location.href.split('#')[1];
                 
                 $.getJSON('data/location.json', function(data) {
                     $.each(data.locations, function(i, f) {
+                        //alert("excuse me");
+
                         latDiff = Math.abs(currentLat - f.lat);
                         lngDiff = Math.abs(currentLng - f.lng);
+                        
+                        if (flag) {
+                            if (!(window.location.href.endsWith("00"))) {
+                                if(f.time == "0000") {
+                                    //alert("this is bullshit");
 
-                        if ((window.location.href.substr(window.location.href.lastIndexOf('#') + 1)) == f.time) {
+                                    //alert(f.name);
+                                    //alert(latDiff.toString());
+
+                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                        if (index == 0) {
+                                            //alert(f.name);
+
+                                            panorama.setPano(f.panoid);
+                                            var newPos = new google.maps.LatLng(f.lat, f.lng);
+                                            //map.setCenter(new google.maps.LatLng(f.lat, f.lng));
+                                            map.setCenter(newPos);
+                                            
+                                            flag = false;
+                                            index += 1;
+                                        }
+                                    }
+                                }
+                                else {
+                                    //alert(f.time);
+                                    //alert(f.name);
+                                    //alert(latDiff.toString());
+
+                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                        //alert("name here: " + f.name);
+                                        //alert(index);
+
+                                        if (index == 0) {
+                                            //alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+
+                                            //newTime = "#" + f.time;
+                                            //url = window.location.href;
+                                            //url = url.concat(newTime);
+
+                                            //var timeString = window.location.href.substr(window.location.href.lastIndexOf('#') + 1);
+
+                                            //timeString = timeString.replace(timeString, supposedTime);
+
+                                            //window.location.hash = newTime;
+
+                                            panorama.setPano(f.panoid);
+                                            var newPos = new google.maps.LatLng(f.lat, f.lng);
+                                            //map.setCenter(new google.maps.LatLng(f.lat, f.lng));
+                                            map.setCenter(newPos);
+                                            //alert("am i in " + newPos.toString());
+                                            flag = false;
+                                            index += 1;
+                                        }
+                                    }
+                                }
+                            }
+                            else if ((window.location.href.substr(window.location.href.lastIndexOf('#') + 1)) == f.time) {
+                                if(currTime == f.time) {
+                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                        if (index == 0) {
+                                            panorama.setPano(f.panoid);
+                                            var newPos = new google.maps.LatLng(f.lat, f.lng);
+                                            //map.setCenter(new google.maps.LatLng(f.lat, f.lng));
+                                            map.setCenter(newPos);
+  
+                                            flag = false;
+                                            index += 1;
+                                        }
+                                    }
+                                }
+                                else {
+                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                        if (index == 0) {
+                                            //alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+
+                                            panorama.setPano(f.panoid);
+                                            var newPos = new google.maps.LatLng(f.lat, f.lng);
+                                            //map.setCenter(new google.maps.LatLng(f.lat, f.lng));
+                                            map.setCenter(newPos);
+
+                                            flag = false;
+                                            index += 1;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }); 
+                
+                /*$.getJSON('data/location.json', function(data) {
+                    $.each(data.locations, function(i, f) {
+                        alert("excuse me");
+                        latDiff = Math.abs(currentLat - f.lat);
+                        lngDiff = Math.abs(currentLng - f.lng);
+                        
+                        if ((window.location.href.substr(window.location.href.lastIndexOf('#') + 1)) == f.time) { 
+                            alert("time is f.time: " + f.time);
                             if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
-                                if (displayTime == f.time) {
+                                if (currTime == f.time) {
+                                    if (index1 == 0) {
+                                        alert("display time same");
+                                    }
                                     alert("display time same");
                                     panoId = f.panoid;
 
                                     map.setCenter(new google.maps.LatLng(currentLat, currentLng));
                                     setLocation(map, panoId, panorama);
                                     //count = count + 1;
+                                    index1 += 1;
+                                    break;
                                 }
                                 else {
+                                    if (index1 == 0) {
+                                        alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+                                    }
                                     alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
                                     
                                     newTime = "#" + f.time;
                                     window.location.href = window.location.href.split('#')[0].concat(newTime);
                                     
+                                    //var timeString = window.location.href.substr(window.location.href.lastIndexOf('#') + 1);
+
+                                    //timeString = timeString.replace(timeString, supposedTime);
+                                    
                                     panoId = f.panoid;
 
                                     map.setCenter(new google.maps.LatLng(currentLat, currentLng));
                                     setLocation(map, panoId, panorama);
+                                    index1 += 1;
+                                    break;
                                 }
                             }
                         }
-                        else if (!window.location.href.endsWith("00")) {
-                            if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7))) && (f.time == "0000")) {
-                                panoId = f.panoid;
+                        else if (!(window.location.href.endsWith("00"))) {  
+                            alert("time is 0000");
+                            if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                if (f.time == "0000") {
+                                    if (index2 == 0) {
+                                        alert("time is 0000");
+                                    }
+                                    alert("time is 0000");
+                                    
+                                    panoId = f.panoid;
 
-                                map.setCenter(new google.maps.LatLng(currentLat, currentLng));
-                                setLocation(map, panoId, panorama);
+                                    map.setCenter(new google.maps.LatLng(currentLat, currentLng));
+                                    setLocation(map, panoId, panorama);
+                                    index2 += 1;
+                                    break;
+                                }
+                                else {
+                                    if (index2 == 0) {
+                                        alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+                                    }
+                                    alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+                                    
+                                    newTime = "#" + f.time;
+                                    url = window.location.href;
+                                    url = url.concat(newTime);
+
+                                    //var timeString = window.location.href.substr(window.location.href.lastIndexOf('#') + 1);
+
+                                    //timeString = timeString.replace(timeString, supposedTime);
+                                    
+                                    //window.location.hash = newTime;
+
+                                    panoId = f.panoid;
+
+                                    map.setCenter(new google.maps.LatLng(currentLat, currentLng));
+                                    setLocation(map, panoId, panorama);
+                                    index2 += 1;
+                                    break;
+                                }
                             }
                         }
+                        else {
+                            alert("this is crap");
+                        }
                     });
-                }); 
+                }); */
+                checkAudio(newPos.lat(), newPos.lng(), panorama.getPov().heading).pipe(checkFilesArray);
+                return newPos;
             }
             
             function checkBtn(event) {
@@ -1021,7 +1192,7 @@
                 currentLat = currentPos.lat();
                 currentLng = currentPos.lng();
                 
-                //alert("current latitude: " + currentLat.toString());
+                alert("current latitude: " + currentLat.toString());
                 
                 //alert("initial count: " + count);
                 
@@ -1048,7 +1219,7 @@
                             //alert(panoId);
                             //alert(currentLat.toString());
                             //alert(panoId);
-                            map.setCenter(new google.maps.LatLng(currentLat, currentLng));
+                            map.setCenter(new google.maps.LatLng(f.lat, f.lng));
                             setLocation(map, panoId, panorama);
                             count = count + 1;
                             //alert("count in loop: " + count);
@@ -1108,55 +1279,6 @@
                     });
                 });
             }
-            
-            /*$('#00').click(function() {
-                var map00 = new google.maps.Map(document.getElementById('map'), {
-                    center: tampines,
-                    zoom: 14
-                });
-                var pano00 = new google.maps.StreetViewPanorama(
-                document.getElementById('pano'), {
-                    position: tampines,
-                    pov: {
-                        heading: 34,
-                        pitch: 10
-                    }
-                });
-                
-                pano00.setPano(panoId);
-                //map00.setStreetView(pano00);
-            })
-            
-            $('#02').click(function() {
-                var map02 = new google.maps.Map(document.getElementById('map'), {
-                    center: tamp02,
-                    zoom: 14
-                });
-                var pano02 = new google.maps.StreetViewPanorama(
-                document.getElementById('pano'), {
-                    position: tamp02,
-                    pov: {
-                        heading: 34,
-                        pitch: 10
-                    }
-                });
-                
-                pano02.setPano(panoId3);
-                //map02.setStreetView(pano02);
-            })*/
-            
-            // Toggles between map and panorama view
-            /*function togglePanorama(){
-                if(isPanorama){
-                    map.streetView.setVisible(false);
-                    $('#message').empty().append('Click here to take a tour of our office.');
-                    isPanorama = 0;
-                } else{
-                    map.streetView.setVisible(true);
-                    $('#message').empty().append('Back to the map.');
-                    isPanorama = 1;
-                }
-            }*/
             
             alert("test");
             

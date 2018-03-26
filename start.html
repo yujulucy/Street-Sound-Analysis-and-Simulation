@@ -9,7 +9,8 @@
         <!-- Load the Sounds of Street View code -->
         <script src="js/sosv.min.js"></script>
         <!--script src="js/sosv.js"></script-->
-        <script src="howler.js-master/src/howler.core.js"></script>
+        <!--script src="howler.js-master/src/howler.core.js"></script-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.js"></script>
         <script src="data/audio.json"></script>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -217,7 +218,7 @@
                     <script>
                         var panoId;
                         //var defaultPos = {lat: 1.34946590020551, lng: 103.94630536437035}
-                        var defaultPos = {lat: 1.353628536030063, lng: 103.9450628310442}
+                        var defaultPos = {lat: 1.353611776901849, lng: 103.94506886601448}
                         var prevVolume = 0;
                         var vol = 0;
                         var prevPos;
@@ -287,7 +288,15 @@
 
                                 checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
                             });*/
-
+                            
+                            /*soundFile = new Howl({
+                                src: ["audio/29 Jan 18 1.22pm Mrt Exit.mp3"],
+                                loop: true,
+                                html5: true
+                            });*/
+                            
+                            //soundFile.play();
+                            
                             google.maps.event.addListener(panorama, 'position_changed', function() {
                             //panorama.addListener('position_changed', function() {
                                 //alert("position changed");
@@ -407,7 +416,7 @@
                                                 //alert("newLat in check audio: " + newLat.toString() + " newLng: " + newLng.toString());
                                             }
 
-                                            var loop = (!parseFloat(f.pause)) ? true : false;
+                                            //var loop = (!parseFloat(f.pause)) ? true : false;
 
                                             if ((diffLat < 0.0005) && (diffLng < 0.0004)) {// && (f.time == currTime)) {
                                                 panPos = updatePan(diffLat, diffLng, heading);
@@ -416,7 +425,7 @@
                                                 files.push(f.src.toString());
                                                 volArr.push(vol.toString());
                                                 panPosArr.push(panPos.toString());
-                                                pauseArr.push(loop.toString());
+                                                //pauseArr.push(loop.toString());
                                             }
 
                                         }
@@ -424,7 +433,8 @@
                                             //checkCurrentTime(newLat, newLng);
                                             //alert("supposedTime: " + supposedTime);
 
-                                            var loop = (!parseFloat(f.pause)) ? true : false;
+                                            //var loop = (!parseFloat(f.pause)) ? true : false;
+                                            //alert("loop: " + loop.toString());
 
                                             if (index == 0) {
                                                 //alert("else if");
@@ -439,7 +449,7 @@
                                                 files.push(f.src.toString());
                                                 volArr.push(vol.toString());
                                                 panPosArr.push(panPos.toString());
-                                                pauseArr.push(loop.toString());
+                                                //pauseArr.push(loop.toString());
                                             }
 
                                         }
@@ -459,20 +469,36 @@
                             var d = $.Deferred();
 
                             //alert("volume in checkfile: " +　vol.toString());
+                            alert("hello");
+                            
+                            if (!webApiTest()) {
+                                alert('Your browser does not support the Web Audio API!');
+                            }
 
                             setTimeout(function() {
                                 if (files.length > 0) {
+                                    //alert("not playing");
+                                    /*soundFile = new Howl({
+                                        src: ["audio/Adele.mp3"],
+                                        loop: true,
+                                        html5: true
+                                    });
+
+                                    soundFile.play();*/
+                                    
                                     for (i = 0; i < files.length; i++) {
+                                        alert("in the loop");
+                                        alert(files[i].toString());
                                         sound[i] = new Howl({
                                             src: files[i],
-                                            loop: pauseArr[i],
+                                            loop: true, //pauseArr[i],
                                             html5: true
                                         });
-
+                                        alert("whyyyyyyy");
                                         //alert("filename in check file: " + files[i]);
                                         //alert("vol in check file: " + volArr[i]);
                                         soundId = sound[i].play();
-                                        alert("soundId: " + soundId);
+                                        alert("soundId: " + soundId.toString());
                                         //alert("panPos in check file = " + panPosArr[i].toString());
                                         //sound[i].pos(panPosArr[i], 1, 1, soundId);
                                         sound[i].volume(volArr[i], soundId);
@@ -486,7 +512,7 @@
                                     pauseArr = [];
                                 }
                                 else {
-                                    //alert("nothing in files");
+                                    alert("nothing in files");
                                 }
 
                                 d.resolve();
@@ -494,10 +520,22 @@
 
                             return d.promise();
                         }
+                        
+                        function webApiTest() {
+                            alert("checking web api");
+                            var waAPI;
+                            if (typeof AudioContext !== "undefined") {
+                                waAPI = new AudioContext();
+                            } 
+                            else if (typeof webkitAudioContext !== "undefined") {
+                                waAPI = new webkitAudioContext();
+                            }
+                            return (waAPI) ? true : false;
+                        };
 
                         function stopAudio() {
                             if (audio.length > 0) {
-                                //alert("something in audio");
+                                alert("something in audio");
                                 for (i = 0; i < sound.length; i++) {
                                     sound[i].stop();
                                 }
@@ -507,7 +545,7 @@
                                 sound = [];
                             }
                             else {
-                                //alert("nothing in audio");
+                                alert("nothing in audio");
                             }
                         }
 
