@@ -299,11 +299,20 @@
                 newPos = panorama.getPosition();
                 newLat = newPos.lat();
                 newLng = newPos.lng();
+                heading = panorama.getPov().heading;
                 
                 if (window.location.href.indexOf("?dev=true") > -1) {
                     alert("detected dev");
                     //timeVar = checkCurrentTime(newLat, newLng);
                     addMarker();
+                }
+                
+                var index = 0;
+                            
+                if(index == 0) {
+                    alert("loading default audio");
+                    checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
+                    //alert("weird");
                 }
                 
                 //checkAudio(newLat, newLng);
@@ -357,7 +366,8 @@
                     
                     stopAudio();
                     
-                    var updatedPos = checkPano(newLat, newLng);
+                    checkPano(newLat, newLng);
+                    //var updatedPos = checkPano(newLat, newLng);
                     //alert(updatedPos.toString());
                     //alert(updatedPos.lat().toString());
                     
@@ -1040,99 +1050,9 @@
                         }
                     });
                 }); 
-                
-                /*$.getJSON('data/location.json', function(data) {
-                    $.each(data.locations, function(i, f) {
-                        alert("excuse me");
-                        latDiff = Math.abs(currentLat - f.lat);
-                        lngDiff = Math.abs(currentLng - f.lng);
-                        
-                        if ((window.location.href.substr(window.location.href.lastIndexOf('#') + 1)) == f.time) { 
-                            alert("time is f.time: " + f.time);
-                            if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
-                                if (currTime == f.time) {
-                                    if (index1 == 0) {
-                                        alert("display time same");
-                                    }
-                                    alert("display time same");
-                                    panoId = f.panoid;
-
-                                    map.setCenter(new google.maps.LatLng(currentLat, currentLng));
-                                    setLocation(map, panoId, panorama);
-                                    //count = count + 1;
-                                    index1 += 1;
-                                    break;
-                                }
-                                else {
-                                    if (index1 == 0) {
-                                        alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
-                                    }
-                                    alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
-                                    
-                                    newTime = "#" + f.time;
-                                    window.location.href = window.location.href.split('#')[0].concat(newTime);
-                                    
-                                    //var timeString = window.location.href.substr(window.location.href.lastIndexOf('#') + 1);
-
-                                    //timeString = timeString.replace(timeString, supposedTime);
-                                    
-                                    panoId = f.panoid;
-
-                                    map.setCenter(new google.maps.LatLng(currentLat, currentLng));
-                                    setLocation(map, panoId, panorama);
-                                    index1 += 1;
-                                    break;
-                                }
-                            }
-                        }
-                        else if (!(window.location.href.endsWith("00"))) {  
-                            alert("time is 0000");
-                            if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
-                                if (f.time == "0000") {
-                                    if (index2 == 0) {
-                                        alert("time is 0000");
-                                    }
-                                    alert("time is 0000");
-                                    
-                                    panoId = f.panoid;
-
-                                    map.setCenter(new google.maps.LatLng(currentLat, currentLng));
-                                    setLocation(map, panoId, panorama);
-                                    index2 += 1;
-                                    break;
-                                }
-                                else {
-                                    if (index2 == 0) {
-                                        alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
-                                    }
-                                    alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
-                                    
-                                    newTime = "#" + f.time;
-                                    url = window.location.href;
-                                    url = url.concat(newTime);
-
-                                    //var timeString = window.location.href.substr(window.location.href.lastIndexOf('#') + 1);
-
-                                    //timeString = timeString.replace(timeString, supposedTime);
-                                    
-                                    //window.location.hash = newTime;
-
-                                    panoId = f.panoid;
-
-                                    map.setCenter(new google.maps.LatLng(currentLat, currentLng));
-                                    setLocation(map, panoId, panorama);
-                                    index2 += 1;
-                                    break;
-                                }
-                            }
-                        }
-                        else {
-                            alert("this is crap");
-                        }
-                    });
-                }); */
+                //alert(newPos.toString());
                 checkAudio(newPos.lat(), newPos.lng(), panorama.getPov().heading).pipe(checkFilesArray);
-                return newPos;
+                //return newPos;
             }
             
             function checkBtn(event) {
@@ -1192,7 +1112,7 @@
                 currentLat = currentPos.lat();
                 currentLng = currentPos.lng();
                 
-                alert("current latitude: " + currentLat.toString());
+                //alert("current latitude: " + currentLat.toString());
                 
                 //alert("initial count: " + count);
                 

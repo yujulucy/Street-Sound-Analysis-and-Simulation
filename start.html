@@ -234,6 +234,11 @@
                         var currTime = "0000";
 
                         function initialize() {
+                            var index = 0;
+                            //new SOSV('data/audio.json');
+                            //var fenway = {lat: 42.345573, lng: -71.098326};
+                            //var tampines = {lat: 1.3532035, lng: 103.944902}
+                            //var defaultPos = {lat: 25.01454757187443, lng: 121.30027011036873}
 
                             //var map = new google.maps.Map(document.getElementById('map'));
                             map = new google.maps.Map(document.getElementById('map'), {
@@ -260,6 +265,13 @@
                                 }
                             });
 
+                            if (index == 0) {
+                                //checkAudio(defaultPos.lat, defaultPos.lng, panorama.getPov().heading).pipe(checkFilesArray);
+                            }
+
+                            //panorama.setPano(panoId);  //test
+                            //map.setStreetView(panorama);
+
                             prevPos = panorama.getPosition();
 
                             //var audio = new Audio('audio/horn.mp3');
@@ -270,29 +282,22 @@
                             newLng = newPos.lng();
                             heading = panorama.getPov().heading;
 
-                            /*if (window.location.href.indexOf("?dev=true") > -1) {
+                            if (window.location.href.indexOf("?dev=true") > -1) {
                                 alert("detected dev");
                                 //timeVar = checkCurrentTime(newLat, newLng);
                                 addMarker();
-                            }*/
+                            }
+
+                            var index = 0;
+
+                            if(index == 0) {
+                                alert("loading default audio");
+                                checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
+                                //alert("weird");
+                            }
 
                             //checkAudio(newLat, newLng);
-                            
-                            /*soundFile = new Howl({
-                                src: ["audio/29 Jan 18 1.22pm Mrt Exit.mp3"],
-                                loop: true,
-                                html5: true
-                            });*/
-                            
-                            //soundFile.play();
-                            
-                            var index = 0;
-                            
-                            if(index == 0) {
-                                //alert("loading default audio");
-                                checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
-                            }
-                            
+
                             /*google.maps.event.addListener(panorama, 'pano_changed', function() {
                                 //alert("panorama changed");
                                 newPos = panorama.getPosition();
@@ -304,21 +309,22 @@
 
                                 checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
                             });*/
-                            
+
                             google.maps.event.addListener(panorama, 'position_changed', function() {
                             //panorama.addListener('position_changed', function() {
                                 //alert("position changed");
                                 newPos = panorama.getPosition();
-
+                                //alert(newPos.toString()); 
+                                //panoId = newPos.lat();
+                                //panorama = newPos.lng();
+                                //if (panorama.getPosition().lat() == f.lat) && (panorama.getPosition().lng() == f.lng) {
+                                //newLat = map.getCenter().lat();
+                                //newLng = map.getCenter().lng();
                                 newLat = newPos.lat();
                                 newLng = newPos.lng();
                                 heading = panorama.getPov().heading;
-                                
-                                if (window.location.href.indexOf("?dev=true") > -1) {
-                                    alert("detected dev");
-                                    //timeVar = checkCurrentTime(newLat, newLng);
-                                    addMarker();
-                                }
+                                //alert(newLat.toString());
+                                //map.setCenter(new google.maps.LatLng(newLat, newLng));
 
                                 stopAudio();
 
@@ -329,6 +335,8 @@
 
                                 //checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
                                 //checkAudio(updatedPos.lat(), updatedPos.lng(), panorama.getPov().heading).pipe(checkFilesArray);
+
+                                index += 1;
                             });
 
                             google.maps.event.addListener(panorama, 'pov_changed', function() {
@@ -347,7 +355,6 @@
                             });
 
                             map.setStreetView(panorama);
-                            index += 1;
                         }
 
                         //google.maps.event.addDomListener(window, 'load', initialize);
@@ -366,10 +373,6 @@
                                 $.each(data.locations, function(i, f) {
                                     if (flag) {
                                         if ((lat.toString() == f.lat) && (lng.toString() == f.lng)) {
-                                            if(f.name.endsWith("163")) {
-                                                //alert("lat is true, lng is true. lat: " + lat.toString() + " lng: " + lng.toString());
-                                            }
-
                                             hexSign = "#t";
                                             validateTime = hexSign.concat(f.time);
 
@@ -395,9 +398,6 @@
                                             //alert("supposedTime when setting: " + supposedTime);
                                         }
                                         else {
-                                            if(f.name.endsWith("163")) {
-                                                //alert("lat is false, lng is false. lat: " + lat.toString() + " lng: " + lng.toString());
-                                            }
                                             for (i = 0; i < timearr.length; i++) {
                                                 $(timearr[i].toString()).css('background-color', '');
                                             }
@@ -418,8 +418,8 @@
                                 var index = 0;
                                 const howlerList = {};
                                 //alert(newLat.toString());
-                                //alert("got here");
-                                //alert("newLat in check audio: " + newLat.toString() + " newLng: " + newLng.toString());
+                                alert("got here");
+                                alert("newLat in check audio: " + newLat.toString() + " newLng: " + newLng.toString());
                                 supposedTime = checkCurrentTime(newLat, newLng);
 
                                 $.getJSON('data/audio.json', function(data) {
@@ -453,7 +453,6 @@
                                             //alert("supposedTime: " + supposedTime);
 
                                             //var loop = (!parseFloat(f.pause)) ? true : false;
-                                            //alert("loop: " + loop.toString());
 
                                             if (index == 0) {
                                                 //alert("else if");
@@ -488,38 +487,41 @@
                             var d = $.Deferred();
 
                             //alert("volume in checkfile: " +　vol.toString());
-                            
-                            if (!webApiTest()) {
-                                alert('Your browser does not support the Web Audio API!');
-                            }
 
                             setTimeout(function() {
                                 if (files.length > 0) {
-                                    //alert("not playing");
+                                    alert(files.toString());
+
                                     /*soundFile = new Howl({
-                                        src: ["audio/Adele.mp3"],
+                                        src: files[0],//["audio/Adele.mp3"],
                                         loop: true,
                                         html5: true
                                     });
-
+                                    
                                     soundFile.play();*/
                                     
                                     for (i = 0; i < files.length; i++) {
-                                        //alert("in the loop");
-                                        //alert(files[i].toString());
                                         sound[i] = new Howl({
                                             src: files[i],
-                                            loop: true, //pauseArr[i],
+                                            loop: true,
                                             html5: true
                                         });
-                                        //alert("whyyyyyyy");
+
                                         //alert("filename in check file: " + files[i]);
                                         //alert("vol in check file: " + volArr[i]);
                                         soundId = sound[i].play();
-                                        //alert("soundId: " + soundId.toString());
                                         //alert("panPos in check file = " + panPosArr[i].toString());
                                         //sound[i].pos(panPosArr[i], 1, 1, soundId);
                                         sound[i].volume(volArr[i], soundId);
+                                        //alert("id in loop" + id);
+                                        //alert("vol: " + volArr[i]);
+
+                                        /*sound[i].pannerAttr({
+                                            panningModel: 'HRTF',
+                                            refDistance: 0.8,
+                                            rolloffFactor: 2.5,
+                                            distanceModel: 'exponential'
+                                        }, soundId);*/
 
                                         audio.push(soundId.toString());
                                     }
@@ -538,18 +540,6 @@
 
                             return d.promise();
                         }
-                        
-                        function webApiTest() {
-                            //alert("checking web api");
-                            var waAPI;
-                            if (typeof AudioContext !== "undefined") {
-                                waAPI = new AudioContext();
-                            } 
-                            else if (typeof webkitAudioContext !== "undefined") {
-                                waAPI = new webkitAudioContext();
-                            }
-                            return (waAPI) ? true : false;
-                        };
 
                         function stopAudio() {
                             if (audio.length > 0) {
@@ -594,11 +584,13 @@
                             // Calculate new volume based on distance
                             vol = calculateVolume(distance, db);
 
+                            //alert("hello1");
                             // Set new volume
                             //sound.fade(prevVolume, vol, 500);
 
                             // Cache the new volume / position for checking next time 
                             prevVolume = vol;
+
                             prevPos.lat() == pos2lat;
                             //alert(pos1lat.toString());
                             prevPos.lng() == pos2lng;
@@ -703,13 +695,14 @@
                                     if (flag) {
                                         if (!(window.location.href.endsWith("00"))) {
                                             if(f.time == "0000") {
+                                                //alert("this is bullshit");
 
                                                 //alert(f.name);
                                                 //alert(latDiff.toString());
 
                                                 if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
                                                     if (index == 0) {
-                                                        alert("location: " + f.name);
+                                                        //alert(f.name);
 
                                                         panorama.setPano(f.panoid);
                                                         var newPos = new google.maps.LatLng(f.lat, f.lng);
@@ -731,7 +724,6 @@
                                                     //alert(index);
 
                                                     if (index == 0) {
-                                                        alert("location: " + f.name);
                                                         //alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
 
                                                         //newTime = "#" + f.time;
@@ -759,7 +751,6 @@
                                             if(currTime == f.time) {
                                                 if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
                                                     if (index == 0) {
-                                                        alert("location: " + f.name);
                                                         panorama.setPano(f.panoid);
                                                         var newPos = new google.maps.LatLng(f.lat, f.lng);
                                                         //map.setCenter(new google.maps.LatLng(f.lat, f.lng));
@@ -773,7 +764,6 @@
                                             else {
                                                 if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
                                                     if (index == 0) {
-                                                        alert("location: " + f.name);
                                                         //alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
 
                                                         panorama.setPano(f.panoid);
@@ -798,6 +788,7 @@
                         function checkBtn(event) {
                             stopAudio();
 
+                            //checkAudio(newLat, newLng);
                             var timearr = ["#t0000", "#t0200", "#t0400", "#t0600", "#t0800", "#t1000", "#t1200", "#t1400", "#t1600", "#t1800", "#t2000", "#t2200"];
                             var count = 0;
                             buttonid = event.target.id;
@@ -806,9 +797,9 @@
 
                             str = "#";
                             result = str.concat(buttonid);
-                            //alert("result: " + result);
 
                             for (i = 0; i < timearr.length; i++) {
+                                //alert("hello");
                                 //alert(timearr[i].toString());
                                 if (result == timearr[i].toString()) {
                                     //alert("the time to highlight" + timearr[i].toString());
@@ -824,6 +815,10 @@
                             currentLat = currentPos.lat();
                             currentLng = currentPos.lng();
 
+                            //alert("current latitude: " + currentLat.toString());
+
+                            //alert("initial count: " + count);
+
                             $.getJSON('data/location.json', function(data) {
                                 $.each(data.locations, function(i, f) {
                                     latDiff = Math.abs(currentLat - f.lat);
@@ -837,29 +832,35 @@
                                     if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7))) && (currTime == f.time)) {
                                         //12blk163 not showing because the latDiff is too big (0, 5)
 
-                                        panoId = f.panoid;
+                                        //alert(f.name);
+                                        //alert(lngDiff.toString());
+                                        //alert("inside checking of lat & lng");
 
-                                        map.setCenter(new google.maps.LatLng(currentLat, currentLng));
+                                        //alert(currentLat.toString().substr(0, 7));
+                                        //alert(currentLng.toString().substr(0, 7));
+                                        panoId = f.panoid;
+                                        //alert(panoId);
+                                        //alert(currentLat.toString());
+                                        //alert(panoId);
+                                        map.setCenter(new google.maps.LatLng(f.lat, f.lng));
                                         setLocation(map, panoId, panorama);
                                         count = count + 1;
+                                        //alert("count in loop: " + count);
                                     }
                                 });
                             });
                         }
 
                         function addMarker() {
+                            //alert("why " + lat.toString() + " " + lng.toString());
+                            //currTime = checkCurrentTime(lat, lng);
+                            //alert("whyyyyyyyyy");
                             alert("current time in addMarker: " + currTime);
 
                             $.getJSON('data/audio.json', function(data) {
                                 $.each(data.sounds, function(i, f) {
-                                    if (currTime == f.time) {                                        
-                                        panoId = f.panoid;
-
-                                        map.setCenter(new google.maps.LatLng(currentLat, currentLng));
-                                        panorama.setPano(panoId);
-                                        
-                                        alert(panorama.getPosition().toString());
-                                        
+                                    if (currTime == f.time) {
+                                        //alert("currently time is " + currTime.toString());
                                         var marker = new google.maps.Marker({
                                             map 		: panorama,
                                             title 		: f.name,
@@ -868,8 +869,6 @@
                                             clickable   : true
                                         });
                                         markers.push(marker);
-                                        
-                                        alert("am i in the loop");
 
                                         var contentString = '<div id="content">' + '<h3 id="lat" class="lat">Latitude</h3>' + '<p>' + f.lat.toString() + '</p>'  + '<h3 id="lng" class="lng">Longitude</h3>' + '<p>' + f.lng.toString() + '</p>' + '</div>';
 
@@ -901,7 +900,7 @@
                             });
                         }
 
-                        //alert("test");
+                        alert("test");
 
                     </script>
                 </div>
