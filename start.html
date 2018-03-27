@@ -291,10 +291,10 @@
                             var index = 0;
 
                             if(index == 0) {
-                                alert("loading default audio");
+                                //alert("loading default audio");
                                 checkAudio(newLat, newLng, heading).pipe(checkFilesArray);
                                 //alert("weird");
-                                //index += 1;
+                                index += 1;
                             }
 
                             //checkAudio(newLat, newLng);
@@ -328,7 +328,7 @@
                                 //map.setCenter(new google.maps.LatLng(newLat, newLng));
 
                                 stopAudio();
-
+                                alert("positon changed");
                                 checkPano(newLat, newLng);
                                 //var updatedPos = checkPano(newLat, newLng);
                                 //alert(updatedPos.toString());
@@ -491,7 +491,7 @@
 
                             setTimeout(function() {
                                 if (files.length > 0) {
-                                    alert(files.toString());
+                                    //alert(files.toString());
 
                                     /*soundFile = new Howl({
                                         src: files[0],//["audio/Adele.mp3"],
@@ -514,6 +514,7 @@
                                         //alert("panPos in check file = " + panPosArr[i].toString());
                                         //sound[i].pos(panPosArr[i], 1, 1, soundId);
                                         sound[i].volume(volArr[i], soundId);
+                                        //sound[i].volume(0, soundId);
                                         //alert("id in loop" + id);
                                         //alert("vol: " + volArr[i]);
 
@@ -713,7 +714,6 @@
                                                         flag = false;
                                                         index += 1;
                                                         //alert("1");
-                                                        checkAudio(f.lat, f.lng, panorama.getPov().heading).pipe(checkFilesArray);
                                                     }
                                                 }
                                             }
@@ -727,7 +727,7 @@
                                                     //alert(index);
 
                                                     if (index == 0) {
-                                                        alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+                                                        //alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
 
                                                         //newTime = "#" + f.time;
                                                         //url = window.location.href;
@@ -747,7 +747,6 @@
                                                         flag = false;
                                                         index += 1;
                                                         //alert("2");
-                                                        checkAudio(f.lat, f.lng, panorama.getPov().heading).pipe(checkFilesArray);
                                                     }
                                                 }
                                             }
@@ -764,14 +763,13 @@
                                                         flag = false;
                                                         index += 1;
                                                         //alert("3");
-                                                        checkAudio(f.lat, f.lng, panorama.getPov().heading).pipe(checkFilesArray);
                                                     }
                                                 }
                                             }
                                             else {
                                                 if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
                                                     if (index == 0) {
-                                                        alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+                                                        //alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
 
                                                         panorama.setPano(f.panoid);
                                                         var newPos = new google.maps.LatLng(f.lat, f.lng);
@@ -781,7 +779,6 @@
                                                         flag = false;
                                                         index += 1;
                                                         //alert("4");
-                                                        checkAudio(f.lat, f.lng, panorama.getPov().heading).pipe(checkFilesArray);
                                                     }
                                                 }
                                             }
@@ -790,8 +787,14 @@
                                 });
                             }); 
                             //alert(newPos.toString());
+                            setTimeout(stalling(newPos.lat(), newPos.lng(), panorama.getPov().heading), 300);
                             //checkAudio(newPos.lat(), newPos.lng(), panorama.getPov().heading).pipe(checkFilesArray);
                             //return newPos;
+                        }
+                        
+                        function stalling(lat, lng, heading) {
+                            //alert("waiting");
+                            checkAudio(lat, lng, heading).pipe(checkFilesArray);
                         }
 
                         function checkBtn(event) {
