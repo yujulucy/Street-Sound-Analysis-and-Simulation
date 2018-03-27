@@ -1005,9 +1005,12 @@
                                     //alert(f.name);
                                     //alert(latDiff.toString());
 
-                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                    //if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 7) == f.lat.substr(0, 7))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 8) == f.lng.substr(0, 8)))) {
                                         if (index == 0) {
                                             //alert(f.name);
+                                            //alert(f.panoid);
+                                            //alert("f.lat: " + f.lat.toString() + " f.lng: " + f.lng.toString());
 
                                             panorama.setPano(f.panoid);
                                             var newPos = new google.maps.LatLng(f.lat, f.lng);
@@ -1024,11 +1027,15 @@
                                     //alert(f.name);
                                     //alert(latDiff.toString());
 
-                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                    //if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 7) == f.lat.substr(0, 7))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 8) == f.lng.substr(0, 8)))) {
                                         //alert("name here: " + f.name);
                                         //alert(index);
 
                                         if (index == 0) {
+                                            //alert(f.name);
+                                            //alert(f.panoid);
+                                            //alert("f.lat: " + f.lat.toString() + " f.lng: " + f.lng.toString());
                                             //alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
 
                                             //newTime = "#" + f.time;
@@ -1055,8 +1062,13 @@
                             }
                             else if ((window.location.href.substr(window.location.href.lastIndexOf('#') + 1)) == f.time) {
                                 if(currTime == f.time) {
-                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                    //if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 7) == f.lat.substr(0, 7))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 8) == f.lng.substr(0, 8)))) {
                                         if (index == 0) {
+                                            //alert(f.name);
+                                            //alert(f.panoid);
+                                            //alert("f.lat: " + f.lat.toString() + " f.lng: " + f.lng.toString());
+                                            
                                             panorama.setPano(f.panoid);
                                             var newPos = new google.maps.LatLng(f.lat, f.lng);
                                             //map.setCenter(new google.maps.LatLng(f.lat, f.lng));
@@ -1068,9 +1080,13 @@
                                     }
                                 }
                                 else {
-                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                    //if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 6) == f.lat.substr(0, 6))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 7) == f.lng.substr(0, 7)))) {
+                                    if (((latDiff < 0.00005) || (currentLat.toString().substr(0, 7) == f.lat.substr(0, 7))) && ((lngDiff < 0.000002) || (currentLng.toString().substr(0, 8) == f.lng.substr(0, 8)))) {
                                         if (index == 0) {
                                             //alert("We are sorry to say that we have yet to prepare a photosphere for this timing.");
+                                            //alert(f.name);
+                                            //alert(f.panoid);
+                                            //alert("f.lat: " + f.lat.toString() + " f.lng: " + f.lng.toString());
 
                                             panorama.setPano(f.panoid);
                                             var newPos = new google.maps.LatLng(f.lat, f.lng);
