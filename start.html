@@ -328,8 +328,16 @@
                                 //map.setCenter(new google.maps.LatLng(newLat, newLng));
 
                                 stopAudio();
-                                alert("positon changed");
-                                checkPano(newLat, newLng);
+                                panorama.setVisible(false);
+                                $('#pano').css('-webkit-filter', 'blur(5px)');  //-webkit-filter: blur(5px);
+                                $('#pano').css('background-color', '#000000');  
+                                //$('#pano').css('transition', 'background-color 0.5s');
+                                //$('#pano').css('-webkit-filter', 'background-color 0.5s');
+                                //alert("positon changed");
+                                tempAlert("position changed", 1000);
+                                callCheckPano(panorama, newLat, newLng, 500);
+                                
+                                //checkPano(newLat, newLng);
                                 //var updatedPos = checkPano(newLat, newLng);
                                 //alert(updatedPos.toString());
                                 //alert(updatedPos.lat().toString());
@@ -356,6 +364,36 @@
                             map.setStreetView(panorama);
                             
                             index += 1;
+                        }
+                        
+                        function tempAlert(msg, duration) {
+                            var el = document.createElement("div");
+
+                            el.setAttribute("style","padding:2px;text-align:center;top:50%;left:50%;background-color:white;font-family: 'Poppins', sans-serif;font-size:0.5em;");
+                            el.innerHTML = msg;
+
+                            setTimeout(function(){
+                                el.parentNode.removeChild(el);
+                            }, duration);
+
+                            document.body.appendChild(el);
+                            
+                            //var mapSection = document.getElementById("content");
+                            //document.body.insertBefore(el, mapSection);
+                        }
+
+                        function callCheckPano(pano, lat, lng, duration) {
+                            setTimeout(function(){
+                                checkPano(lat, lng);
+                            }, duration);
+                            //pano.setVisible(true);
+                            setTimeout(function(){
+                                pano.setVisible(true);
+                                $('#pano').css('-webkit-filter', '');
+                                $('#pano').css('background-color', '');  
+                                //$('#pano').css('transition', 'background-color 0.8s');
+                                //$('#pano').css('-webkit-filter', 'background-color 0.8s');
+                            }, duration+100);
                         }
 
                         //google.maps.event.addDomListener(window, 'load', initialize);

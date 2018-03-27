@@ -17,7 +17,7 @@ When it is started, you will see the message:
 Serving HTTP on 0.0.0.0 port 8080 ...
 ```
 
-3) Now open a browser and type the address: http://127.0.0.1:8080/home.html. You can also access it with http://localhost:8080. You can start by accessing home.html.
+3) Now open a browser and type the address: http://127.0.0.1:8080/home.html. You can also access it with http://localhost:8080/home.html. You can start by accessing home.html.
 
 
 ### Main Files

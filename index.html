@@ -17,6 +17,8 @@
         <script src="data/audio.json"></script>
         
         <!--base href="https://www.w3schools.com/images/"-->
+        
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
         <!-- Your code to create an instance of a Sound of Street View -->
         <script>
@@ -26,7 +28,7 @@
             });
         </script>
         
-        <style>
+        <style>            
             html, body {
                 height: 100%;
                 margin: 0;
@@ -188,6 +190,7 @@
             
             function initialize() {
                 var index = 0;
+
                 //new SOSV('data/audio.json');
                 //var fenway = {lat: 42.345573, lng: -71.098326};
                 //var tampines = {lat: 1.3532035, lng: 103.944902}
@@ -362,8 +365,17 @@
                     }*/
                     
                     stopAudio();
-                    alert("positon changed");
-                    checkPano(newLat, newLng);
+                    panorama.setVisible(false);
+                    $('#pano').css('-webkit-filter', 'blur(5px)');  //-webkit-filter: blur(5px);
+                    $('#pano').css('background-color', '#000000');  
+                    //$('#pano').css('transition', 'background-color 0.5s');
+                    //$('#pano').css('-webkit-filter', 'background-color 0.5s');
+                    //alert("positon changed");
+                    tempAlert("position changed", 1000);
+                    callCheckPano(panorama, newLat, newLng, 500);
+                    //panorama.setVisible(true);
+                    
+                    //checkPano(newLat, newLng);
                         
                     //var updatedPos = checkPano(newLat, newLng);
                     //alert(updatedPos.toString());
@@ -429,6 +441,33 @@
             }
             
             //google.maps.event.addDomListener(window, 'load', initialize);
+            
+            function tempAlert(msg, duration) {
+                var el = document.createElement("div");
+                
+                el.setAttribute("style","padding:10px;text-align:center;top:50%;left:50%;background-color:white;font-family: 'Poppins', sans-serif;font-size:0.5em;");
+                el.innerHTML = msg;
+                
+                setTimeout(function(){
+                    el.parentNode.removeChild(el);
+                }, duration);
+                
+                document.body.appendChild(el);
+            }
+            
+            function callCheckPano(pano, lat, lng, duration) {
+                setTimeout(function(){
+                    checkPano(lat, lng);
+                }, duration);
+                //pano.setVisible(true);
+                setTimeout(function(){
+                    pano.setVisible(true);
+                    $('#pano').css('-webkit-filter', '');
+                    $('#pano').css('background-color', '');  
+                    //$('#pano').css('transition', 'background-color 0.8s');
+                    //$('#pano').css('-webkit-filter', 'background-color 0.8s');
+                }, duration+100);
+            }
             
             function checkCurrentTime(lat, lng) {
                 
