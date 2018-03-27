@@ -1,5 +1,25 @@
 # Street-Sound-Analysis-and-Simulation
 
+### Instructions to start:
+Start a simple http server with Python.
+1) Start cmd.exe and navigate to the folder you downloaded/cloned
+
+2) For <b>python2</b>, type:
+```
+python -m SimpleHTTPServer 8080
+```
+For <b>python3</b>, type:
+```
+python -m http.server 8080
+```
+When it is started, you will see the message: 
+```
+Serving HTTP on 0.0.0.0 port 8080 ...
+```
+
+3) Now open a browser and type the address: http://127.0.0.1:8080. You can also access it with http://localhost:8080. You can start by accessing home.html.
+
+
 ### Main Files
 This project consists of 3 main webpages (home.html, start.html, and analysis.html).  
 
